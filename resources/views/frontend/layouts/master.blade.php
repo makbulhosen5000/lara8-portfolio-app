@@ -4,6 +4,7 @@
 
     @include('frontend.partials.header')
     @include('frontend.partials.nav')
+    
 
     @yield('content')
 

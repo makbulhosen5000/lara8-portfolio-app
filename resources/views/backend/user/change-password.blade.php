@@ -34,11 +34,8 @@
     </div>
     <div class="row">
         <div class="col-md-6 offset-3 pt-3">
-            <form action="{{route('update.password')}} " method="POST" >
+            <form action="{{route('users.update.password')}} " method="POST" >
                 @csrf
-                @if(Session::has('success'))
-                <div class="btn btn-success">{{Session::get('success')}} </div>
-                @endif
                 @if(Session::has('error'))
                 <div class="btn btn-danger">{{Session::get('error')}}</div>
                 @endif

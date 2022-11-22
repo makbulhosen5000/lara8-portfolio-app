@@ -28,49 +28,33 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        @if(Auth::user()->role=='Admin')
+        @if(Auth::user()->role=='admin')
+        {{-- user info start --}}
         <li class="nav-item has-treeview {{($prefix=='/users')?'menu-open':''}} ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-              Manage User 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('users.all')}}" class="nav-link {{($route=='users.all')?'active':''}} ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User List</p>
-                </a>
-              </li>
-            </ul>
-        </li>
-        <li class="nav-item has-treeview {{($prefix=='/profile')?'menu-open':''}} ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-              Manage Profile 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('profile.user')}}" class="nav-link {{($route=='profile.user')?'active':''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User Profile</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('change.password')}}" class="nav-link {{($route=='change.password')?'active':''}}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>User Password Change</p>
-                  </a>
-                </li>
-              </ul>
-        </li>
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+            Manage User 
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('users.all')}}" class="nav-link {{($route=='users.all')?'active':''}} ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('users.change.password')}}" class="nav-link {{($route=='users.change.password')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User Password Change</p>
+              </a>
+            </li>
+          </ul>
+      </li>
+      {{-- user info end --}}
+      {{-- logo start --}}
         <li class="nav-item has-treeview {{($prefix=='/logos')?'menu-open':''}} ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -87,9 +71,36 @@
                 </a>
               </li>
             </ul>
-         
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('companies.logo.view')}} " class="nav-link {{($route=='companies.logo.view')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Brands Logo</p>
+                </a>
+              </li>
+            </ul>
         </li>
-        
+        {{-- logo end --}}
+                {{-- slider start --}}
+                <li class="nav-item has-treeview {{($prefix=='/sliders')?'menu-open':''}} ">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                    Manage Slider
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('sliders.view')}} " class="nav-link {{($route=='sliders.view')?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Slider</p>
+                      </a>
+                    </li>
+                  </ul>
+              </li>
+              {{-- slider end --}}
+        {{-- contact start --}}
         <li class="nav-item has-treeview {{($prefix=='/contacts')?'menu-open':''}} ">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -107,28 +118,13 @@
             </li>
           </ul>
       </li>
-      <li class="nav-item has-treeview {{($prefix=='/sliders')?'menu-open':''}} ">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-copy"></i>
-          <p>
-          Manage Slider
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('sliders.view')}} " class="nav-link {{($route=='sliders.view')?'active':''}}">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Slider</p>
-            </a>
-          </li>
-        </ul>
-    </li>
+      {{-- contact end --}}
+      {{-- about, team, news,career start --}}
       <li class="nav-item has-treeview {{($prefix=='/about')?'menu-open':''}} ">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-             Manage About & Blog
+             Manage About & More
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -136,21 +132,178 @@
             <li class="nav-item">
               <a href="{{route('about.view')}} " class="nav-link {{($route=='about.view')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Upload Vedio</p>
+                <p>About Us</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('about.team.view')}} " class="nav-link {{($route=='about.team.view')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Our Team</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('about.news.view')}} " class="nav-link {{($route=='about.news.view')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Blog</p>
+                <p>News</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('about.career.view')}} " class="nav-link {{($route=='about.career.view')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Career</p>
               </a>
             </li>
           </ul>
       </li>
-      
+      {{-- about, team, news,career end --}}
+       {{-- contact start --}}
+       <li class="nav-item has-treeview {{($prefix=='/resumes')?'menu-open':''}} ">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-copy"></i>
+          <p>
+           Manage Resume
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('resumes.experience.view')}} " class="nav-link {{($route=='resumes.experience.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Job Experineces</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.education.view')}} " class="nav-link {{($route=='resumes.education.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Qualification</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.skill.view')}} " class="nav-link {{($route=='resumes.skill.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Skill</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.language.view')}} " class="nav-link {{($route=='resumes.language.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Language</p>
+            </a>
+          </li>
+      </ul>
+    </li>
+    {{-- contact end --}}
+      {{-- services start--}}
+      <li class="nav-item has-treeview {{($prefix=='/services')?'menu-open':''}} ">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-copy"></i>
+          <p>
+            Manage Service
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('services.view')}} " class="nav-link {{($route=='services.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Service</p>
+            </a>
+          </li>
+        </ul>
+        {{-- service end --}}
+    </li>
+        <li class="nav-item has-treeview {{($prefix=='/timers')?'menu-open':''}} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Manage CountDownTimer 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('timers.view')}} " class="nav-link {{($route=='timers.view')?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Timer</p>
+                </a>
+              </li>
+            </ul>
+        </li>
 
-      
-      {{-- Manage Product --}}
+        <li class="nav-item has-treeview {{($prefix=='/categories')?'menu-open':''}} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Manage Category
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('categories.view')}}" class="nav-link {{($route=='categories.view')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('sub.categories.view')}}" class="nav-link {{($route=='sub.categories.view')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sub-Category</p>
+                </a>
+              </li>
+            </ul>
+        </li>
+        {{-- <li class="nav-item has-treeview {{($prefix=='/brands')?'menu-open':''}} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Manage Brand 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('brands.view')}}" class="nav-link {{($route=='brands.view')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Brand List</p>
+                </a>
+              </li>
+            </ul>
+        </li> --}}
+        {{-- <li class="nav-item has-treeview {{($prefix=='/brands')?'menu-open':''}} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Manage Color
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('colors.view')}}" class="nav-link {{($route=='colors.view')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Color List</p>
+                </a>
+              </li>
+            </ul>
+        </li> --}}
+        {{-- <li class="nav-item has-treeview {{($prefix=='/brands')?'menu-open':''}} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+              Manage Size
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('sizes.view')}}" class="nav-link {{($route=='sizes.view')?'active':''}} ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Size List</p>
+                </a>
+              </li>
+            </ul>
+        </li> --}}
         <li class="nav-item has-treeview {{($prefix=='/products')?'menu-open':''}} ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -166,27 +319,8 @@
                   <p>Product List</p>
                 </a>
               </li>
-            
             </ul>
         </li>
-
-        <li class="nav-item has-treeview {{($prefix=='/email')?'menu-open':''}} ">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-            Manage Order
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{route('orders.view')}} " class="nav-link {{($route=='orders.view')?'active':''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Order</p>
-              </a>
-            </li>
-          </ul>
-      </li>
         <li class="nav-item has-treeview {{($prefix=='/email')?'menu-open':''}} ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

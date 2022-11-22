@@ -32,12 +32,12 @@ class ProductController extends Controller
        //__category create function is here__//
       public function create()
       {
-        //   $data['categories']=Category::all();
-        //   $data['subCategories']=SubCategory::all();
-        //   $data['brands']=Brand::all();
-        //   $data['colors']=Color::all();
-        //   $data['sizes']=Size::all();
-          return view('backend.product.create-product');
+          $data['categories']=Category::all();
+          $data['subCategories']=SubCategory::all();
+          $data['brands']=Brand::all();
+          $data['colors']=Color::all();
+          $data['sizes']=Size::all();
+          return view('backend.product.create-product',$data);
       }
 
      //__category store function is here__//
@@ -47,22 +47,22 @@ class ProductController extends Controller
        DB::transaction(function () use($request) {
            $validatedData = $request->validate([
                'name' => 'required|unique:products,name',
-            //    'sub_category_id' => 'required',
-            //    'category_id' => 'required',
-            // 'brand_id' => 'required',
+               'sub_category_id' => 'required',
+               'category_id' => 'required',
+            //    'brand_id' => 'required',
            ]);
        });
 
       $storeData=new Product();
-    //   $storeData->category_id=$request->category_id;
-    //   $storeData->sub_category_id=$request->sub_category_id;
-    //   $storeData->brand_id=$request->brand_id;
-    //   $storeData->color_id=$request->color_id;
-    //   $storeData->size_id=$request->size_id;
+        $storeData->category_id=$request->category_id;
+        $storeData->sub_category_id=$request->sub_category_id;
+        $storeData->brand_id=$request->brand_id;
+        $storeData->color_id=$request->color_id;
+        $storeData->size_id=$request->size_id;
         $storeData->name=$request->name;
         $storeData->slug=str_slug($request->name);
         $storeData->price=$request->price;
-        // $storeData->model=$request->model;
+        $storeData->model=$request->model;
         $storeData->short_desc=$request->short_desc;
         $storeData->long_desc=$request->long_desc;
 
@@ -75,40 +75,40 @@ class ProductController extends Controller
           $storeData['image']=$imgName;
       }
       $storeData->save();
-    //    if($storeData->save()){
-    //        $files=$request->sub_image;
-    //        if(!empty($files)){
-    //            foreach($files as $file){
-    //                $imgName=date('YmdHi').$file->getClientOriginalName();
-    //                $file->move('public/images/product_sub_images',$imgName);
-    //                $subimage['sub_image']=$imgName;
-    //                $subimage=new ProductSubImage();
-    //                $subimage->product_id=$storeData->id;
-    //                $subimage->sub_image=$imgName;
-    //                $subimage->save();
-    //            }
-    //        }
-        //    $colors=$request->color_id;
-        //    if(!empty($colors)){
-        //        foreach($colors as $color){
-        //            $myColor=new ProductColor();
-        //            $myColor->product_id=$storeData->id;
-        //            $myColor->color_id=$color;
-        //            $myColor->save();
-        //        }
-        //    }
-        //    $sizes=$request->size_id;
-        //    if(!empty($sizes)){
-        //        foreach($sizes as $size){
-        //            $mySize=new ProductSize();
-        //            $mySize->product_id=$storeData->id;
-        //            $mySize->size_id=$size;
-        //            $mySize->save();
-        //        }
-        //    }
-    //   }else{
-    //       return redirect()->back()->with('error','Data Not Sent');
-    //   }
+       if($storeData->save()){
+           $files=$request->sub_image;
+           if(!empty($files)){
+               foreach($files as $file){
+                   $imgName=date('YmdHi').$file->getClientOriginalName();
+                   $file->move('public/images/product_sub_images',$imgName);
+                   $subimage['sub_image']=$imgName;
+                   $subimage=new ProductSubImage();
+                   $subimage->product_id=$storeData->id;
+                   $subimage->sub_image=$imgName;
+                   $subimage->save();
+               }
+           }
+           $colors=$request->color_id;
+           if(!empty($colors)){
+               foreach($colors as $color){
+                   $myColor=new ProductColor();
+                   $myColor->product_id=$storeData->id;
+                   $myColor->color_id=$color;
+                   $myColor->save();
+               }
+           }
+           $sizes=$request->size_id;
+           if(!empty($sizes)){
+               foreach($sizes as $size){
+                   $mySize=new ProductSize();
+                   $mySize->product_id=$storeData->id;
+                   $mySize->size_id=$size;
+                   $mySize->save();
+               }
+           }
+      }else{
+          return redirect()->back()->with('error','Data Not Sent');
+      }
 
       Session::flash('success','Product Created successfully');
       return redirect()->back();
@@ -130,11 +130,11 @@ class ProductController extends Controller
         $data['editData']=Product::find($id);
         $data['categories']=Category::all();
         $data['subCategories']=SubCategory::all();
-        // $data['brands']=Brand::all();
-        // $data['colors']=Color::all();
-        // $data['sizes']=Size::all();
-        // $data['color_array'] = ProductColor::select('color_id')->where('product_id',$data['editData']->id)->orderBy('id','asc')->get()->toArray();
-        // $data['size_array'] = ProductSize::select('size_id')->where('product_id',$data['editData']->id)->orderBy('id','asc')->get()->toArray();
+        $data['brands']=Brand::all();
+        $data['colors']=Color::all();
+        $data['sizes']=Size::all();
+        $data['color_array'] = ProductColor::select('color_id')->where('product_id',$data['editData']->id)->orderBy('id','asc')->get()->toArray();
+        $data['size_array'] = ProductSize::select('size_id')->where('product_id',$data['editData']->id)->orderBy('id','asc')->get()->toArray();
         return view('backend.product.create-product',$data);
     } 
      //__category update function is here__//
@@ -149,15 +149,15 @@ class ProductController extends Controller
         });
  
        $updateData=Product::find($id);
-    // $updateData->category_id=$request->category_id;
-    // $updateData->sub_category_id=$request->sub_category_id;
-    // $updateData->brand_id=$request->brand_id;
-    // $updateData->color_id=$request->color_id;
-    // $updateData->size_id=$request->size_id;
+       $updateData->category_id=$request->category_id;
+       $updateData->sub_category_id=$request->sub_category_id;
+       $updateData->brand_id=$request->brand_id;
+       $updateData->color_id=$request->color_id;
+       $updateData->size_id=$request->size_id;
        $updateData->name=$request->name;
        $updateData->slug=str_slug($request->name);
        $updateData->price=$request->price;
-    //    $updateData->model=$request->model;
+       $updateData->model=$request->model;
        $updateData->short_desc=$request->short_desc;
        $updateData->long_desc=$request->long_desc;
        $img=$request->file('image');
@@ -192,32 +192,32 @@ class ProductController extends Controller
                 $subimage->save();
                 }
             }
-            //__ color table data update __//
-            // $colors=$request->color_id;
-            // if(!empty($colors)){
-            //     ProductColor::where('product_id',$id)->delete();  
-            // }
-            // if(!empty($colors)){
-            //     foreach($colors as $color){
-            //         $myColor=new ProductColor();
-            //         $myColor->product_id=$updateData->id;
-            //         $myColor->color_id=$color;
-            //         $myColor->save();
-            //     }
-            // }
-            //  //__ size table data update __//
-            // $sizes=$request->size_id;
-            // if(!empty($sizes)){
-            //     ProductSize::where('product_id',$id)->delete();  
-            // }
-            // if(!empty($sizes)){
-            //     foreach($sizes as $size){
-            //         $mySize=new ProductSize();
-            //         $mySize->product_id=$updateData->id;
-            //         $mySize->size_id=$size;
-            //         $mySize->save();
-            //     }
-            // }
+        //    color table data update
+            $colors=$request->color_id;
+            if(!empty($colors)){
+                ProductColor::where('product_id',$id)->delete();  
+            }
+            if(!empty($colors)){
+                foreach($colors as $color){
+                    $myColor=new ProductColor();
+                    $myColor->product_id=$updateData->id;
+                    $myColor->color_id=$color;
+                    $myColor->save();
+                }
+            }
+             //__ size table data update __//
+            $sizes=$request->size_id;
+            if(!empty($sizes)){
+                ProductSize::where('product_id',$id)->delete();  
+            }
+            if(!empty($sizes)){
+                foreach($sizes as $size){
+                    $mySize=new ProductSize();
+                    $mySize->product_id=$updateData->id;
+                    $mySize->size_id=$size;
+                    $mySize->save();
+                }
+            }
        }else{
            return redirect()->back()->with('error','Data Not Updated');
        }
@@ -239,14 +239,14 @@ class ProductController extends Controller
        {
         unlink('public/images/product_images/'.$product->image);
        }
-    //    $subImage = ProductSubImage::where('product_id',$product->id)->get()->toArray();
-    //    if(!empty($subImage)){
-    //        foreach($subImage as $value){
-    //            if(!empty($value)){
-    //             unlink('public/images/product_sub_images/'.$value['sub_image']);
-    //            }
-    //        }
-    //    }
+       $subImage = ProductSubImage::where('product_id',$product->id)->get()->toArray();
+       if(!empty($subImage)){
+           foreach($subImage as $value){
+               if(!empty($value)){
+                unlink('public/images/product_sub_images/'.$value['sub_image']);
+               }
+           }
+       }
        ProductSubImage::where('product_id',$product->id)->delete();
        ProductColor::where('product_id',$product->id)->delete();
        ProductSize::where('product_id',$product->id)->delete();

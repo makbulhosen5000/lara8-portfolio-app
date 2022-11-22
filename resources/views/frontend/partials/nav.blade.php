@@ -1,3 +1,4 @@
+{{-- Start Navbar  --}}
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
     <div class="container">
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +20,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav brand">
-                <img src="{{ asset('public/frontend') }}/assets/imgs/akash.jpg" height="180" alt="" class="brand-img">
+                <img src="{{ asset('public/images/image/'.$contact->image) }}" height="180" alt="" class="brand-img">
                 <li class="brand-txt">
-                    <h5 class="brand-title title-name">Md.Makbul hosen</h5>
-                    <div class=" title-name">Laravel Developer</div>
+                    <h5 class="brand-title title-name">{{ $contact->name }}</h5>
+                    <div class=" title-name">{{ $contact->designation }}</div>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -42,3 +43,5 @@
         </div>
     </div>
 </nav>
+<!-- Navbar -->
+{{-- Start Navbar  --}}

@@ -98,4 +98,23 @@ class UserController extends Controller
         $data->delete();
        return redirect()->route('users.all');
     }
+    //password change function here.....................
+    public function ChangePassword(){
+
+        return view('backend.user.change-password');
+
+    }
+    public function UpdatePassword(Request $request){
+        if(Auth::attempt(['id'=>Auth()->id(),'password'=>$request->current_password])){
+            $userPass=User::find(Auth()->id());
+            $userPass->password=bcrypt($request->new_password);
+            $userPass->save();
+            Session::flash('success','Password Change Successfully');
+            return redirect()->back();
+        }else{
+            Session::flash('error','Wrong Password!Please Enter the Correct Password');
+            return redirect()->back();
+        }
+
+    }
 }

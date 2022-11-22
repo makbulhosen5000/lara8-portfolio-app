@@ -15,10 +15,14 @@ use App\Models\Team;
 use App\Models\Service;
 use App\Models\Contact;
 use App\Models\ContactUs;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Language;
 use App\Models\Medicine;
 use App\Models\News;
 use App\Models\Product;
-
+use App\Models\Qualification;
+use App\Models\Skill;
 use Session;
 use Mail;
 
@@ -26,41 +30,57 @@ use Mail;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.layouts.home');
+        $data['contact'] = Contact::first();
+        $data['experiences'] = Experience::all();
+        $data['qualifications'] = Qualification::all();
+        $data['skills'] = Skill::all();
+        $data['languageSkill'] = Language::all();
+        return view('frontend.layouts.home',$data);
     }
      //__ about function is here __//
      public function about(){
-        return view('frontend.pages.about');
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.about',$data);
     }
 
     //__ resume function is here __//
     public function resume(){
-        return view('frontend.pages.resume');
+        $data['contact'] = Contact::first();
+        $data['experiences'] = Experience::all();
+        $data['qualifications'] = Qualification::all();
+        $data['skills'] = Skill::all();
+        $data['languageSkill'] = Language::all();
+        return view('frontend.pages.resume',$data);
     }
 
      //__ service function is here __//
      public function service(){
-        return view('frontend.pages.service');
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.service',$data);
     }
 
     //__ portfolio function is here __//
     public function portfolio(){
-        return view('frontend.pages.portfolio');
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.portfolio',$data);
     }
 
     //__ blog function is here __//
     public function blog(){
-        return view('frontend.pages.blog');
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.blog',$data);
     }
 
     //__ package function is here __//
     public function package(){
-    return view('frontend.pages.package');
+    $data['contact'] = Contact::first();
+    return view('frontend.pages.package',$data);
     }
 
     //__ contact function is here __//
     public function contact(){
-        return view('frontend.pages.contact');
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.contact',$data);
     }
 
     //__ Store Contact Us function__ //
@@ -92,7 +112,7 @@ class FrontendController extends Controller
     public function UserEmailView()
     {
         $mail['userEmail'] = ContactUs::orderBy('id', 'desc')->get();
-        return view('frontend.Email.user-email-view', $mail);
+        return view('frontend.email.user-email-view', $mail);
     }
 
     //__ Contact Us Delete function__ //

@@ -34,13 +34,12 @@
             </div>
         </div>
     </div>
-            <table id="example2" class="table table-bordered table-hover text-center">
+            <table id="example2" class="table  table-bordered table-hover text-center">
                 {{-- table start --}}
                 <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Sort_Title_One</th>
-                        <th>Sort_Title_Two</th>
+                        <th>Short_Title</th>
                         <th>Long_Title</th>
                         <th>Image</th>
                         <th>Action</th>
@@ -52,12 +51,7 @@
                         <td>{{$item->id}}</td>
                         <td>
                           <textarea name="" id="" cols="32" rows="5" style="text-align: justify">
-                          {{ $item->short_title1 }}
-                        </textarea>
-                        </td>
-                        <td>
-                          <textarea name="" id="" cols="32" rows="5" style="text-align: justify">
-                          {{ $item->short_title2 }}
+                          {{ $item->short_title }}
                         </textarea>
                         </td>
                         <td>

@@ -17,11 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->string('title1')->nullable();
             $table->text('short_desc')->nullable();
-            $table->text('title2')->nullable();
-            $table->text('desc')->nullable();
-            $table->text('title3')->nullable();
             $table->longText('long_desc')->nullable();
             $table->string('date')->nullable();
             $table->string('pdf')->nullable();

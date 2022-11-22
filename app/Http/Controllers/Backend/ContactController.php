@@ -31,23 +31,53 @@ class ContactController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'linkedin' => 'required',
-            'youtube' => 'required',
         ]);
-       $userData=new Contact();
-       $userData->created_by=Auth::user()->id;
-       $userData->address=$request->address;
-       $userData->phone=$request->phone;
-       $userData->email=$request->email;
-       $userData->facebook=$request->facebook;
-       $userData->twitter=$request->twitter;
-       $userData->linkedin=$request->linkedin;
-       $userData->youtube=$request->youtube;
-       $userData->created_by=$request->created_by;
-       $userData->updated_by=$request->updated_by;
-       $userData->save();
+       $storeData=new Contact();
+       $storeData->created_by=Auth::user()->id;
+       $storeData->intro=$request->intro;
+       $storeData->name=$request->name;
+       $storeData->designation=$request->designation;
+       //for resume
+       if($request->hasFile('resume')){
+        $file=$request->file('resume');
+        $extension=$file->getClientOriginalExtension();
+        $newImage=time().'.'.$extension;
+        $file->move('public/images/resume/',$newImage);
+        $storeData->resume=$newImage;
+    }else{
+        return $request;
+        $storeData->resume='';
+    }
+       //for image
+       if($request->hasFile('image')){
+        $file=$request->file('image');
+        $extension=$file->getClientOriginalExtension();
+        $newImage=time().'.'.$extension;
+        $file->move('public/images/image/',$newImage);
+        $storeData->image=$newImage;
+        }else{
+        return $request;
+        $storeData->image='';
+        }
+       $storeData->title=$request->title;
+       $storeData->short_desc=$request->short_desc;
+       $storeData->long_desc=$request->long_desc;
+       $storeData->phone=$request->phone;
+       $storeData->email=$request->email;
+       $storeData->address=$request->address;
+       $storeData->birthday=$request->birthday;
+       $storeData->github=$request->github;
+       $storeData->linkedin=$request->linkedin;
+       $storeData->facebook=$request->facebook;
+       $storeData->twitter=$request->twitter;
+       $storeData->instagram=$request->instagram;
+       $storeData->youtube=$request->youtube;
+       $storeData->google=$request->google;
+       $storeData->whatsapp=$request->whatsapp;
+       $storeData->skype=$request->skype;
+       $storeData->created_by=$request->created_by;
+       $storeData->updated_by=$request->updated_by;
+       $storeData->save();
        Session::flash('success','Contact Created successfully');
        return redirect()->back();
     }
@@ -65,34 +95,65 @@ class ContactController extends Controller
     //edit function is here.......................
     public function edit($id)
     {
-        $data=Contact::find($id);
-        return view('backend.contact.edit-contact',compact('data'));
+        $editData=Contact::find($id);
+        return view('backend.contact.create-contact',compact('editData'));
     }
 
     //update function is here.......................
     public function update(Request $request, $id)
     {
-        $update=Contact::find($id);
-        $update->updated_by=Auth::user()->id;
-        $update->address=$request->address;
-        $update->phone=$request->phone;
-        $update->email=$request->email;
-        $update->facebook=$request->facebook;
-        $update->twitter=$request->twitter;
-        $update->linkedin=$request->linkedin;
-        $update->youtube=$request->youtube;
-        $update->created_by=$request->created_by;
-        $update->updated_by=$request->updated_by;
-        $update->save();
-        Session::flash('success','Contact Updated successfully');
-       return redirect()->back();
+        $updateData=Contact::find($id);
+        $updateData->intro=$request->intro;
+        $updateData->name=$request->name;
+        $updateData->designation=$request->designation;
+        // for resume
+        if($request->hasFile('resume')){
+            $file=$request->file('resume');
+            $extension=$file->getClientOriginalExtension();
+            $myImage=time().'.'.$extension;
+            $file->move('public/images/resume/',$myImage);
+            $updateData->resume=$myImage;
+        }
+           // for image
+           if($request->hasFile('image')){
+            $file=$request->file('image');
+            $extension=$file->getClientOriginalExtension();
+            $myImage=time().'.'.$extension;
+            $file->move('public/images/image/',$myImage);
+            $updateData->image=$myImage;
+        }
+        $updateData->title=$request->title;
+        $updateData->short_desc=$request->short_desc;
+        $updateData->long_desc=$request->long_desc;
+        $updateData->phone=$request->phone;
+        $updateData->email=$request->email;
+        $updateData->address=$request->address;
+        $updateData->birthday=$request->birthday;
+        $updateData->github=$request->github;
+        $updateData->linkedin=$request->linkedin;
+        $updateData->facebook=$request->facebook;
+        $updateData->twitter=$request->twitter;
+        $updateData->instagram=$request->instagram;
+        $updateData->youtube=$request->youtube;
+        $updateData->google=$request->google;
+        $updateData->whatsapp=$request->whatsapp;
+        $updateData->skype=$request->skype;
+        $updateData->created_by=$request->created_by;
+        $updateData->updated_by=$request->updated_by;
+        $updateData->save();
+        Session::flash('success','Contact Updated Successfully');
+        return redirect()->back();
     }
 
     //delete function is here...........................
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $contact=Contact::find($id);
-        $contact->delete();
+        $deleteData=Contact::find($request->id);
+        if(file_exists('public/images/resume/'.$deleteData->resume)AND ! empty($deleteData->resume))
+        {
+         unlink('public/images/resume/'.$deleteData->resume);
+        }
+        $deleteData->delete();
        return redirect()->route('contacts.view');
     }
 }

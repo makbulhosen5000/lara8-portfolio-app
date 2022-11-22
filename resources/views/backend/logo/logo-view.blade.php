@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
                     <h5 class="display-5">Logo List</h5>
-                    @if($logo<1)
+                    @if($logoCount<1)
                   <a href="{{route('logos.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Logo</a>
                     @endif
                 </div>
@@ -44,13 +44,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($user as $item)
+                    @foreach ($logos as $logo)
                     <tr>
-                        <td>{{$item->id}}</td>
-                        <td><img src="{{asset('public/images/logo/'.$item->image)}}" width="60px";height='60px' alt=""></td>
+                        <td>{{$logo->id}}</td>
+                        <td><img src="{{asset('public/images/logo/'.$logo->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
-                            <a href="{{route('logos.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
-                            <a href="{{route('logos.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{route('logos.edit',$logo->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                            <a href="{{route('logos.destroy',$logo->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

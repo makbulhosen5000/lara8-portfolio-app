@@ -39,13 +39,27 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>address</th>
+                        <th>Intro</th>
+                        <th>name</th>
+                        <th>Designation</th>
+                        <th>Resume</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Short_Desc</th>
+                        <th>Description</th>
+                        <th>BrithDay</th>
                         <th>Phone</th>
                         <th>Email</th>
+                        <th>address</th>
+                        <th>Github</th>
+                        <th>Linkedin</th>
                         <th>Facebook</th>
                         <th>Twitter</th>
-                        <th>Linkedin</th>
-                        <th>Youtube</th>
+                        <th>YouTube</th>
+                        <th>google</th>
+                        <th>WhatsApp</th>
+                        <th>Instagram</th>
+                        <th>Skype</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -53,13 +67,31 @@
                     @foreach ($user as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->address}}</td>
+                        <td>{{$item->intro}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->designation}}</td>
+                        <td> <iframe src="{{ asset('public/images/resume/'.$item->resume) }}"  width="250" frameborder="0"></iframe> </td>
+                        <td><img src="{{asset('public/images/image/'.$item->image)}}" width="60px";height='60px' alt=""></td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->short_desc}}</td>
+                        <td>
+                          <textarea name="" id="" cols="140" rows="10" style="text-align: justify">
+                            {{ $item->long_desc }}
+                          </textarea>
+                        </td>
+                        <td>{{$item->birthday}}</td>
                         <td>{{$item->phone}}</td>
                         <td>{{$item->email}}</td>
+                        <td>{{$item->address}}</td>
+                        <td>{{$item->github}}</td>
+                        <td>{{$item->linkedin}}</td>
                         <td>{{$item->facebook}}</td>
                         <td>{{$item->twitter}}</td>
-                        <td>{{$item->linkedin}}</td>
+                        <td>{{$item->instagram}}</td>
                         <td>{{$item->youtube}}</td>
+                        <td>{{$item->google}}</td>
+                        <td>{{$item->whatsapp}}</td>
+                        <td>{{$item->skype}}</td>
 
                         <td>
                             <a href="{{route('contacts.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>

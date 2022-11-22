@@ -50,15 +50,11 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="my-input">Sort_Title_One</label>
-                    <input id="my-input" class="form-control" type="text" name="short_title1" placeholder="Enter Your Sort_Title" value="{{@$editData->short_title1}}" >
-                    <font style="color:red">{{($errors->has('sort_title1'))?($errors->first('sort_title1')):''}} </font>
+                    <label for="my-input">Sort_Title</label>
+                    <input id="my-input" class="form-control" type="text" name="short_title" placeholder="Enter Your Sort_Title" value="{{@$editData->short_title}}" >
+                    <font style="color:red">{{($errors->has('sort_title'))?($errors->first('sort_title')):''}} </font>
                 </div>
-                <div class="form-group">
-                  <label for="my-input">Sort_Title_Two</label>
-                  <input id="my-input" class="form-control" type="text" name="short_title2" placeholder="Enter Your Sort_Title" value="{{@$editData->short_title2}}" >
-                  <font style="color:red">{{($errors->has('sort_title2'))?($errors->first('sort_title2')):''}} </font>
-              </div>
+                
                 <div class="form-group">
                     <label for="my-input">Long_Title</label>
                     <textarea name="long_title" id="" cols="73" rows="5"  placeholder="Enter Your Long_Title">{{@$editData->long_title}}</textarea>

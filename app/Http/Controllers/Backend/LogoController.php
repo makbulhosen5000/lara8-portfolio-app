@@ -13,9 +13,9 @@ class LogoController extends Controller
     //view function is here......................................
     public function index()
     {
-        $user=Logo::all();
-        $logo=Logo::count();
-        return view('backend.logo.logo-view', compact('user','logo') );
+        $data['logos']=Logo::all();
+        $data['logoCount']=Logo::count();
+        return view('backend.logo.logo-view',$data);
     }
 
       //Create function is here......................................
@@ -46,7 +46,7 @@ class LogoController extends Controller
         }
        $userData->save();
        Session::flash('success','Logo Created successfully');
-       return redirect()->back();
+       return redirect()->route('logos.view');
     }
 
     /**
@@ -62,8 +62,8 @@ class LogoController extends Controller
     //edit function is here.......................
     public function edit($id)
     {
-        $data=Logo::find($id);
-        return view('backend.logo.edit-logo',compact('data'));
+        $editData=Logo::find($id);
+        return view('backend.logo.logo-create',compact('editData'));
     }
 
     //update function is here.......................

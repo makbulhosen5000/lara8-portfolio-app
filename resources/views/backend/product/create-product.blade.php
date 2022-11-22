@@ -53,7 +53,7 @@
                 @endif
       
                 <!-- row start -->
-                {{-- <div class="row">
+                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="my-input">Category</label>
@@ -80,7 +80,7 @@
                     </div>
                   </div>
                   
-                </div> --}}
+                </div>
                 <!-- row end -->
                 <!-- row start -->
                 <div class="row"> 
@@ -100,14 +100,14 @@
                     <font style="color:red">{{($errors->has('price'))?($errors->first('price')):''}} </font>
                     </div>
                   </div>
-                  {{-- <div class="col-md-4">
+                  <div class="col-md-4">
                         <div class="form-group">
                         <label>Product SKU</label>
                         <label>Product Price</label>
                         <input class="form-control-sm" type="text" style="width: 100%;" name="model" value="{{@$editData->model}}" placeholder="Enter Product Model Name" />
                         <font style="color:red">{{($errors->has('model'))?($errors->first('model')):''}} </font>
                         </div>
-                  </div> --}}
+                  </div>
                 </div>
                 <!-- row end -->
                 <!-- row start -->
@@ -141,12 +141,12 @@
                         <input id="my-input" class="form-control" type="file" name="image" id="file" onchange="showImage(this,'image')" value=''>
                         </div>
                      </div>
-                     {{-- <div class="col-md-6">
+                     <div class="col-md-6">
                         <div class="form-group">
                         <label>Sub Image</label>
                         <input id="my-input" class="form-control" type="file" name="sub_image[]" multiple>
                         </div>
-                     </div> --}}
+                     </div>
                 </div>
                 <!-- row end -->
               <div class="form-group">

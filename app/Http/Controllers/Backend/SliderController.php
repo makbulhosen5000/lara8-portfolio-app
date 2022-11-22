@@ -33,8 +33,7 @@ class SliderController extends Controller
          ]);
         $storeData=new Slider();
         $storeData->created_by=Auth::user()->id;
-        $storeData->short_title1=$request->short_title1;
-        $storeData->short_title2=$request->short_title2;
+        $storeData->short_title=$request->short_title;
         $storeData->long_title=$request->long_title;
         $storeData->created_by=$request->created_by;
         $storeData->updated_by=$request->updated_by;
@@ -70,8 +69,7 @@ class SliderController extends Controller
     {
         $updateData=Slider::find($id);
         $updateData->updated_by=Auth::user()->id;
-        $updateData->short_title1=$request->short_title1;
-        $updateData->short_title2=$request->short_title2;
+        $updateData->short_title=$request->short_title;
         $updateData->long_title=$request->long_title;
         if($request->hasFile('image')){
             $file=$request->file('image');

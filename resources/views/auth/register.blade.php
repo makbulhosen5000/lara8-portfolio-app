@@ -127,12 +127,12 @@ margin-left: 4px;
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input name="usertype" class="form-control" type="text" list="browsers" required placeholder="Enter User Type" />
+                            <input name="role" class="form-control" type="text" list="browsers" required placeholder="Enter User Type" />
                             <datalist id="browsers">
                             <option value="admin">
-                            <option value="User">
+                            <option value="user">
                             </datalist>
-                            @error('usertype')
+                            @error('role')
                             <span
                             class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
