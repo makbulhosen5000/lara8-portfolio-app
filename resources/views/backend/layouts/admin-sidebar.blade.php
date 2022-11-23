@@ -190,6 +190,12 @@
               <p>Language</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.documentary.view')}} " class="nav-link {{($route=='resumes.documentary.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Work Documentary</p>
+            </a>
+          </li>
       </ul>
     </li>
     {{-- contact end --}}

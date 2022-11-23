@@ -12,12 +12,13 @@
             <h3 class="font-weight-light">Personal Info</h3>
             <span class="line mb-5"></span>
             <ul class="mt40 info list-unstyled">
-                <li><span>Birthdate</span> :{{ $contact->birthday }}</li>
+                <li><span>Birthday</span> :{{ $contact->birthday }}</li>
                 <li><span>Email</span> : {{ $contact->email }}</li>
                 <li><span>Phone</span> : +88{{ $contact->phone }}</li>
                 <li><span>WhatsApp</span> : +88{{ $contact->whatsapp }}</li>
                 <li><span>Skype</span> : {{ $contact->skype }} </li>
-                <li><span>Address</span> :  {{ $contact->address }}</li>
+                <li><span>Permanent Address</span> : Dottokhola, Bijoynogor,Brahmanbaria,Bangladesh</li>
+                <li><span>Present Address</span> :  {{ $contact->address }}</li>
             </ul>
             <ul class="social-icons pt-3">
                 <li class="social-item"><a class="social-link" href="{{ $contact->github }}"><i class="ti-github" aria-hidden="true"></i></a></li>

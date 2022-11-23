@@ -19,10 +19,12 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\backend\SkillController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\backend\WorkDocumentaryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\WorkDocumentary;
 use Illuminate\Support\Facades\Route;
 
 
@@ -179,22 +181,29 @@ Route::group(['middleware' => ['test']], function () {
             Route::post('/qualification/update/{id}', [QualificationController::class, 'update'])->name('resumes.education.update');
             Route::get('/qualification/destroy/{id}', [QualificationController::class, 'destroy'])->name('resumes.education.destroy');
              // skill routes
-             Route::get('/skill/view', [SkillController::class, 'index'])->name('resumes.skill.view');
-             Route::get('/skill/create', [SkillController::class, 'create'])->name('resumes.skill.create');
-             Route::post('/skill/store', [SkillController::class, 'store'])->name('resumes.skill.store');
-             Route::get('/skill/edit/{id}', [SkillController::class, 'edit'])->name('resumes.skill.edit');
-             Route::post('/skill/update/{id}', [SkillController::class, 'update'])->name('resumes.skill.update');
-             Route::get('/skill/destroy/{id}', [SkillController::class, 'destroy'])->name('resumes.skill.destroy');
-              // Language routes
-              Route::get('/language/view', [LanguageController::class, 'index'])->name('resumes.language.view');
-              Route::get('/language/create', [LanguageController::class, 'create'])->name('resumes.language.create');
-              Route::post('/language/store', [LanguageController::class, 'store'])->name('resumes.language.store');
-              Route::get('/language/edit/{id}', [LanguageController::class, 'edit'])->name('resumes.language.edit');
-              Route::post('/language/update/{id}', [LanguageController::class, 'update'])->name('resumes.language.update');
-              Route::get('/language/destroy/{id}', [LanguageController::class, 'destroy'])->name('resumes.language.destroy');
+            Route::get('/skill/view', [SkillController::class, 'index'])->name('resumes.skill.view');
+            Route::get('/skill/create', [SkillController::class, 'create'])->name('resumes.skill.create');
+            Route::post('/skill/store', [SkillController::class, 'store'])->name('resumes.skill.store');
+            Route::get('/skill/edit/{id}', [SkillController::class, 'edit'])->name('resumes.skill.edit');
+            Route::post('/skill/update/{id}', [SkillController::class, 'update'])->name('resumes.skill.update');
+            Route::get('/skill/destroy/{id}', [SkillController::class, 'destroy'])->name('resumes.skill.destroy');
+            // Language routes
+            Route::get('/language/view', [LanguageController::class, 'index'])->name('resumes.language.view');
+            Route::get('/language/create', [LanguageController::class, 'create'])->name('resumes.language.create');
+            Route::post('/language/store', [LanguageController::class, 'store'])->name('resumes.language.store');
+            Route::get('/language/edit/{id}', [LanguageController::class, 'edit'])->name('resumes.language.edit');
+            Route::post('/language/update/{id}', [LanguageController::class, 'update'])->name('resumes.language.update');
+            Route::get('/language/destroy/{id}', [LanguageController::class, 'destroy'])->name('resumes.language.destroy');
+            // documentary routes
+            Route::get('/documentary/view', [WorkDocumentaryController::class, 'index'])->name('resumes.documentary.view');
+            Route::get('/documentary/create', [WorkDocumentaryController::class, 'create'])->name('resumes.documentary.create');
+            Route::post('/documentary/store', [WorkDocumentaryController::class, 'store'])->name('resumes.documentary.store');
+            Route::get('/documentary/edit/{id}', [WorkDocumentaryController::class, 'edit'])->name('resumes.documentary.edit');
+            Route::post('/documentary/update/{id}', [WorkDocumentaryController::class, 'update'])->name('resumes.documentary.update');
+            Route::get('/documentary/destroy/{id}', [WorkDocumentaryController::class, 'destroy'])->name('resumes.documentary.destroy');
         });
-    //__ Services Management start __//
 
+    //__ Services Management start __//
     Route::prefix('services')->group(function () {
         //__ service one routes __//
         Route::get('/service/view', [ServiceController::class, 'index'])->name('services.view');
