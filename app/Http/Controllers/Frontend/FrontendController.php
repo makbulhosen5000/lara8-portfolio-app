@@ -23,6 +23,7 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\Qualification;
 use App\Models\Skill;
+use App\Models\WorkDocumentary;
 use Session;
 use Mail;
 
@@ -35,6 +36,7 @@ class FrontendController extends Controller
         $data['qualifications'] = Qualification::all();
         $data['skills'] = Skill::all();
         $data['languageSkill'] = Language::all();
+        $data['workDocumentaries'] = WorkDocumentary::first();
         return view('frontend.layouts.home',$data);
     }
      //__ about function is here __//
@@ -55,6 +57,7 @@ class FrontendController extends Controller
 
      //__ service function is here __//
      public function service(){
+        $data['services'] = Service::all();
         $data['contact'] = Contact::first();
         return view('frontend.pages.service',$data);
     }

@@ -50,13 +50,14 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="my-input">Short_Title</label>
+                    <label for="my-input">Title</label>
                     <input id="my-input" class="form-control" type="text" name="title" placeholder="Enter Your title" value="{{@$editData->title}}" required>
                     <font style="color:red">{{($errors->has('title'))?($errors->first('title')):''}} </font>
                 </div>
                 <div class="form-group">
                     <label for="my-input">Long_Title</label>
-                    <input id="my-input" class="form-control" type="text" name="description" placeholder="Enter Your Long_Title Name" value="{{@$editData->description}}">
+                    <textarea type="text" id="" cols="54" rows="10" name="description">{{@$editData->description}}</textarea>
+                    <input id="my-input" class="form-control" type="text" name="description" placeholder="Enter Your Description" value="{{@$editData->description}}">
                     <font style="color:red">{{($errors->has('description'))?($errors->first('description')):''}} </font>
                 </div>
                 {{-- <div class="form-group">

@@ -50,7 +50,7 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
-                        <td>{{$item->description}}</td>
+                        <td width="50%">{{$item->description}}</td>
                         {{-- <td><img src="{{asset('public/images/slider_images/'.$item->image)}}" width="60px";height='60px' alt=""></td> --}}
                         <td>
                             <a href="{{route('services.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title')
-     Blog ||{{'Makbul Portfolio'}}
+     Blog || {{'Makbul Portfolio'}}
 @endsection
 @section('content')
 {{-- blog section start --}}

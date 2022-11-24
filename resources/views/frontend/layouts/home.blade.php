@@ -14,6 +14,7 @@
 
  <!--Work Documentory Section start-->
 <section class="section bg-dark text-center">
+
     <div class="container">
         <div class="row text-center">
             <div class="col-md-6 col-lg-3">
@@ -22,7 +23,7 @@
                         <div class="m-auto"><i class="ti-alarm-clock icon-xl"></i></div>
                     </div>
                     <div class="col-7 text-left py-3">
-                        <h1 class="text-danger font-weight-bold font40">500</h1>
+                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_work }}k</h1>
                         <p class="text-light mb-1">Hours Worked</p>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
                         <div class="m-auto"><i class="ti-layers-alt icon-xl"></i></div>
                     </div>
                     <div class="col-7 text-left py-3">
-                        <h1 class="text-danger font-weight-bold font40">50K</h1>
+                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_project }}+</h1>
                         <p class="text-light mb-1">Project Finished</p>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                         {{-- <div class="m-auto"><i class="ti-face-smile icon-xl"></i></div> --}}
                     </div>
                     <div class="col-7 text-left py-3">
-                        <h1 class="text-danger font-weight-bold font40">2 +</h1>
+                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_experience }}+</h1>
                         <p class="text-light mb-1">Years experiences</p>
                     </div>
                 </div>
@@ -56,7 +57,7 @@
                         <div class="m-auto"><i class="ti-home icon-xl"></i></div>
                     </div>
                     <div class="col-7 text-left py-3">
-                        <h1 class="text-danger font-weight-bold font40">5+</h1>
+                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_companies }}+</h1>
                         <p class="text-light mb-1">Companies Work</p>
                     </div>
                 </div>
