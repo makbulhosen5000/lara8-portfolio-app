@@ -26,10 +26,10 @@
         <div class="card-body ">
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
-                    <h5 class="display-5">Service List</h5>
-
-                  <a href="{{route('services.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Service</a>
-
+                    <h5 class="display-5">Logo List</h5>
+                    @if($logoCount<1)
+                  <a href="{{route('logos.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Logo</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -39,21 +39,18 @@
                 <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        {{-- <th>Image</th> --}}
+                        <th>Logo</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($allData as $item)
+                    @foreach ($logos as $logo)
                     <tr>
-                        <td>{{$item->id}}</td>
-                        <td>{{$item->title}}</td>
-                        <td width="50%">{{$item->description}}</td>
+                        <td>{{$logo->id}}</td>
+                        <td><img src="{{asset('public/images/logo/'.$logo->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
-                            <a href="{{route('services.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
-                            <a href="{{route('services.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{route('logos.edit',$logo->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                            <a href="{{route('logos.destroy',$logo->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

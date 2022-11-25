@@ -193,3 +193,13 @@ function showImage(data, imgId){
    
       })(window.Zepto || window.jQuery, window, document);
 </script>
+{{-- CKEditor script --}}
+<script>
+      $(document).ready(function(){
+        CKEDITOR.replace('description',{
+          height:360,
+        })
+      });
+</script>
+
+

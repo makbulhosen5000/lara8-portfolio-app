@@ -51,6 +51,13 @@
                 <p>User Password Change</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('users.location.view')}}" class="nav-link {{($route=='users.location.view')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User Location</p>
+              </a>
+            </li>
+          
           </ul>
       </li>
       {{-- user info end --}}

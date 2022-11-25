@@ -29,17 +29,17 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:news|max:255',
+            'short_desc' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'date' => 'required',
         ]);
         $storeData = new News();
         $storeData->title = $request->title;
         $storeData->slug = Str::slug($request->title);
-        $storeData->title1 = $request->title1;
         $storeData->short_desc = $request->short_desc;
-        $storeData->title2 = $request->title2;
-        $storeData->desc = $request->desc;
-        $storeData->title3 = $request->title3;
-        $storeData->long_desc = $request->long_desc;
+        $storeData->description = $request->description;
         $storeData->date = $request->date;
         //for pdf
         // $img=$request->file('pdf');
@@ -73,12 +73,8 @@ class NewsController extends Controller
         $updateData = News::find($id);
         $updateData->title = $request->title;
         $updateData->slug = Str::slug($request->title);
-        $updateData->title1 = $request->title1;
         $updateData->short_desc = $request->short_desc;
-        $updateData->title2 = $request->title2;
-        $updateData->desc = $request->desc;
-        $updateData->title3 = $request->title3;
-        $updateData->long_desc = $request->long_desc;
+        $updateData->description = $request->description;
         $updateData->date = $request->date;
         // $img=$request->file('pdf');
         // if($img){

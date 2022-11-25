@@ -7,24 +7,20 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CountDownTimerController;
-use App\Http\Controllers\backend\EducationController;
 use App\Http\Controllers\backend\ExperienceController;
 use App\Http\Controllers\backend\LanguageController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\backend\QualificationController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\backend\SkillController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\backend\UserLocationController;
 use App\Http\Controllers\backend\WorkDocumentaryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
-use App\Models\Education;
-use App\Models\Experience;
-use App\Models\WorkDocumentary;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,20 +47,20 @@ Auth::routes();
 
 
 
-//__frontend page routes start from here__//
-Route::get('/', [FrontendController::class, 'index']);
-Route::get('/admin-dashboard', [HomeController::class, 'index']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [HomeController::class, 'dashboard'])->name('home');
-Route::get('about', [FrontendController::class, 'about'])->name('about');
-Route::get('resume', [FrontendController::class, 'resume'])->name('resume');
-Route::get('service', [FrontendController::class, 'service'])->name('service');
-Route::get('portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
-Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
-Route::get('package', [FrontendController::class, 'package'])->name('package');
-Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+    //__frontend page routes start from here__//
+    Route::get('/', [FrontendController::class, 'index']);
+    Route::get('/admin-dashboard', [HomeController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [HomeController::class, 'dashboard'])->name('home');
+    Route::get('about', [FrontendController::class, 'about'])->name('about');
+    Route::get('resume', [FrontendController::class, 'resume'])->name('resume');
+    Route::get('service', [FrontendController::class, 'service'])->name('service');
+    Route::get('portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
+    Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
+    Route::get('package', [FrontendController::class, 'package'])->name('package');
+    Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 
-//__frontend page routes end from here__//
+    //__frontend page routes end from here__//
 
 
 //__backend page routes start from here__//
@@ -77,7 +73,11 @@ Route::group(['middleware' => ['test']], function () {
         Route::post('/update/{id}', [UserController::class, 'update'])->name('users.update');
         Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::get('/change-password', [UserController::class, 'ChangePassword'])->name('users.change.password');
-        Route::post('/update-password', [UserController::class, 'UpdatePassword'])->name('users.update.password');
+        //User Location Routes
+        Route::get('/user-location', [UserLocationController::class, 'index'])->name('users.location.view');
+        Route::get('/user-location-create', [UserLocationController::class, 'create'])->name('users.location.create');
+        Route::post('/user-location-store', [UserLocationController::class, 'store'])->name('users.location.store');
+        
     });
 
 
@@ -164,44 +164,44 @@ Route::group(['middleware' => ['test']], function () {
         Route::post('career/update/{id}', [CareerController::class, 'update'])->name('about.career.update');
         Route::get('career/destroy/{id}', [CareerController::class, 'destroy'])->name('about.career.destroy');
     });
-        //experiences routes start from here
-        Route::prefix('resumes')->group(function () {
-            // experience routes
-            Route::get('/experience/view', [ExperienceController::class, 'index'])->name('resumes.experience.view');
-            Route::get('/experience/create', [ExperienceController::class, 'create'])->name('resumes.experience.create');
-            Route::post('/experience/store', [ExperienceController::class, 'store'])->name('resumes.experience.store');
-            Route::get('/experience/edit/{id}', [ExperienceController::class, 'edit'])->name('resumes.experience.edit');
-            Route::post('/experience/update/{id}', [ExperienceController::class, 'update'])->name('resumes.experience.update');
-            Route::get('/experience/destroy/{id}', [ExperienceController::class, 'destroy'])->name('resumes.experience.destroy');
-            // education routes
-            Route::get('/qualification/view', [QualificationController::class, 'index'])->name('resumes.education.view');
-            Route::get('/qualification/create', [QualificationController::class, 'create'])->name('resumes.education.create');
-            Route::post('/qualification/store', [QualificationController::class, 'store'])->name('resumes.education.store');
-            Route::get('/qualification/edit/{id}', [QualificationController::class, 'edit'])->name('resumes.education.edit');
-            Route::post('/qualification/update/{id}', [QualificationController::class, 'update'])->name('resumes.education.update');
-            Route::get('/qualification/destroy/{id}', [QualificationController::class, 'destroy'])->name('resumes.education.destroy');
-             // skill routes
-            Route::get('/skill/view', [SkillController::class, 'index'])->name('resumes.skill.view');
-            Route::get('/skill/create', [SkillController::class, 'create'])->name('resumes.skill.create');
-            Route::post('/skill/store', [SkillController::class, 'store'])->name('resumes.skill.store');
-            Route::get('/skill/edit/{id}', [SkillController::class, 'edit'])->name('resumes.skill.edit');
-            Route::post('/skill/update/{id}', [SkillController::class, 'update'])->name('resumes.skill.update');
-            Route::get('/skill/destroy/{id}', [SkillController::class, 'destroy'])->name('resumes.skill.destroy');
-            // Language routes
-            Route::get('/language/view', [LanguageController::class, 'index'])->name('resumes.language.view');
-            Route::get('/language/create', [LanguageController::class, 'create'])->name('resumes.language.create');
-            Route::post('/language/store', [LanguageController::class, 'store'])->name('resumes.language.store');
-            Route::get('/language/edit/{id}', [LanguageController::class, 'edit'])->name('resumes.language.edit');
-            Route::post('/language/update/{id}', [LanguageController::class, 'update'])->name('resumes.language.update');
-            Route::get('/language/destroy/{id}', [LanguageController::class, 'destroy'])->name('resumes.language.destroy');
-            // documentary routes
-            Route::get('/documentary/view', [WorkDocumentaryController::class, 'index'])->name('resumes.documentary.view');
-            Route::get('/documentary/create', [WorkDocumentaryController::class, 'create'])->name('resumes.documentary.create');
-            Route::post('/documentary/store', [WorkDocumentaryController::class, 'store'])->name('resumes.documentary.store');
-            Route::get('/documentary/edit/{id}', [WorkDocumentaryController::class, 'edit'])->name('resumes.documentary.edit');
-            Route::post('/documentary/update/{id}', [WorkDocumentaryController::class, 'update'])->name('resumes.documentary.update');
-            Route::get('/documentary/destroy/{id}', [WorkDocumentaryController::class, 'destroy'])->name('resumes.documentary.destroy');
-        });
+    //experiences routes start from here
+    Route::prefix('resumes')->group(function () {
+        // experience routes
+        Route::get('/experience/view', [ExperienceController::class, 'index'])->name('resumes.experience.view');
+        Route::get('/experience/create', [ExperienceController::class, 'create'])->name('resumes.experience.create');
+        Route::post('/experience/store', [ExperienceController::class, 'store'])->name('resumes.experience.store');
+        Route::get('/experience/edit/{id}', [ExperienceController::class, 'edit'])->name('resumes.experience.edit');
+        Route::post('/experience/update/{id}', [ExperienceController::class, 'update'])->name('resumes.experience.update');
+        Route::get('/experience/destroy/{id}', [ExperienceController::class, 'destroy'])->name('resumes.experience.destroy');
+        // education routes
+        Route::get('/qualification/view', [QualificationController::class, 'index'])->name('resumes.education.view');
+        Route::get('/qualification/create', [QualificationController::class, 'create'])->name('resumes.education.create');
+        Route::post('/qualification/store', [QualificationController::class, 'store'])->name('resumes.education.store');
+        Route::get('/qualification/edit/{id}', [QualificationController::class, 'edit'])->name('resumes.education.edit');
+        Route::post('/qualification/update/{id}', [QualificationController::class, 'update'])->name('resumes.education.update');
+        Route::get('/qualification/destroy/{id}', [QualificationController::class, 'destroy'])->name('resumes.education.destroy');
+        // skill routes
+        Route::get('/skill/view', [SkillController::class, 'index'])->name('resumes.skill.view');
+        Route::get('/skill/create', [SkillController::class, 'create'])->name('resumes.skill.create');
+        Route::post('/skill/store', [SkillController::class, 'store'])->name('resumes.skill.store');
+        Route::get('/skill/edit/{id}', [SkillController::class, 'edit'])->name('resumes.skill.edit');
+        Route::post('/skill/update/{id}', [SkillController::class, 'update'])->name('resumes.skill.update');
+        Route::get('/skill/destroy/{id}', [SkillController::class, 'destroy'])->name('resumes.skill.destroy');
+        // Language routes
+        Route::get('/language/view', [LanguageController::class, 'index'])->name('resumes.language.view');
+        Route::get('/language/create', [LanguageController::class, 'create'])->name('resumes.language.create');
+        Route::post('/language/store', [LanguageController::class, 'store'])->name('resumes.language.store');
+        Route::get('/language/edit/{id}', [LanguageController::class, 'edit'])->name('resumes.language.edit');
+        Route::post('/language/update/{id}', [LanguageController::class, 'update'])->name('resumes.language.update');
+        Route::get('/language/destroy/{id}', [LanguageController::class, 'destroy'])->name('resumes.language.destroy');
+        // documentary routes
+        Route::get('/documentary/view', [WorkDocumentaryController::class, 'index'])->name('resumes.documentary.view');
+        Route::get('/documentary/create', [WorkDocumentaryController::class, 'create'])->name('resumes.documentary.create');
+        Route::post('/documentary/store', [WorkDocumentaryController::class, 'store'])->name('resumes.documentary.store');
+        Route::get('/documentary/edit/{id}', [WorkDocumentaryController::class, 'edit'])->name('resumes.documentary.edit');
+        Route::post('/documentary/update/{id}', [WorkDocumentaryController::class, 'update'])->name('resumes.documentary.update');
+        Route::get('/documentary/destroy/{id}', [WorkDocumentaryController::class, 'destroy'])->name('resumes.documentary.destroy');
+    });
 
     //__ Services Management start __//
     Route::prefix('services')->group(function () {
@@ -214,6 +214,7 @@ Route::group(['middleware' => ['test']], function () {
         Route::get('/service/destroy/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
     });
     //__Services Management route end__//
+
     //category routes start from here__//
     Route::prefix('categories')->group(function () {
         Route::get('/view', [CategoryController::class, 'index'])->name('categories.view');
@@ -267,14 +268,12 @@ Route::group(['middleware' => ['test']], function () {
         Route::get('/details/{slug}', [ProductController::class, 'details'])->name('products.details.info');
         Route::post('/updated/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-        
     });
 
     //User Email route for admin panel
     Route::prefix('email')->group(function () {
-    Route::get('user-email.view',[FrontendController::class,'UserEmailView'])->name('user-email.view');
-    Route::get('/user-email.destroy/{id}',[FrontendController::class,'destroy'])->name('user-email.destroy');
+        Route::get('user-email.view', [FrontendController::class, 'UserEmailView'])->name('user-email.view');
+        Route::get('/user-email.destroy/{id}', [FrontendController::class, 'destroy'])->name('user-email.destroy');
     });
-        
 });
 // group middleware End here

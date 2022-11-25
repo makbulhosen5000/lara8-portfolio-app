@@ -39,14 +39,10 @@
                 <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Title Head</th>
+                        <th>Title</th>
                         <th>Slug</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Title</th>
-                        <th>Description</th>
+                        <th>Short_Description</th>
+                        <th width="50%">Description</th>
                         <th>Date</th>
                         <th>Image</th>
                         <th width="20%">Action</th>
@@ -58,26 +54,14 @@
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
                         <td>{{$item->slug}}</td>
-                        <td>{{$item->title1}}</td>
+                        <td>{{$item->short_desc}}</td>
                         <td>
-                          <textarea name="short_desc" id="" cols="35" rows="5" style="text-align: justify">
-                          {{$item->short_desc}}
-                        </textarea></td>
-                        <td>{{$item->title2}}</td>
-                        <td>
-                          <textarea name="desc" id="" cols="35" rows="5" style="text-align: justify">
-                          {{$item->desc}}
+                          <textarea name="description" id="" cols="" rows="" style="text-align: justify">
+                          {{$item->description}}
                         </textarea>
-                      </td>
-                      <td>{{$item->title3}}</td>
-                        <td>
-                          <textarea name="long_desc" id="" cols="38" rows="5" style="text-align: justify">
-                          {{$item->long_desc}}
-                        </textarea>
-                      </td>
+                        </td>
                         <td>{{$item->date}}</td>
                         <td><img src="{{(!empty($item->image))?url('public/images/news/'.$item->image):url('public/images/not_found_img.png')}}" id="image" width="60px";height='60px'></td>
-                        
                         <td>
                             {{-- <a href="{{route('about.news.pdf',$item->id)}}" class="btn btn-success" title="PDF"><i class="fas fa-file-pdf"></i></a> --}}
                             <a href="{{route('about.news.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>

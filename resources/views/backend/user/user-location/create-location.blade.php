@@ -26,19 +26,17 @@
         <div class="card-body ">
             <div class="row">
             <div class="col-md-12  d-flex justify-content-between align-items-center">
-                  @if(isset($editData))
-                  <h5 class="display-5">Edit Service</h5>
-                    @else
-                    <h5 class="display-5">Create Service</h5>
-                  @endif
-                  <a href="{{route('services.view')}}" class="btn btn-warning text-dark"> <i class="fa fa-list"></i> services List</a>
+
+                    <h5 class="display-5">Create User Locatin</h5>
+
+                  <a href="{{route('users.location.view')}}" class="btn btn-warning text-dark"> <i class="fa fa-list"></i> User Location List</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 offset-3 pt-3">
-        <form action="{{(@$editData)?route('services.update',$editData->id):route('services.store')}} " method="POST" enctype="multipart/form-data">
+        <form action="route('users.location.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -50,23 +48,26 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="my-input">Title</label>
-                    <input id="my-input" class="form-control" type="text" name="title" placeholder="Enter Your title" value="{{@$editData->title}}" required>
-                    <font style="color:red">{{($errors->has('title'))?($errors->first('title')):''}} </font>
+                    <label for="my-input">Latitude</label>
+                    <input id="my-input" class="form-control" id="latitude" type="text" name="latitude" value="" 
+                        placeholder="Enter Your Latitude" required>
+                    <font style="color:red">{{ $errors->has('latitude') ? $errors->first('latitude') : '' }} </font>
                 </div>
                 <div class="form-group">
-                    <label for="my-input">Long_Title</label>
-                    <textarea type="text" id="" cols="54" rows="10" name="description">{{@$editData->description}}</textarea>
-                   
-                    <font style="color:red">{{($errors->has('description'))?($errors->first('description')):''}} </font>
+                    <label for="my-input">Longitude</label>
+                    <input id="my-input" class="form-control" id="longitude" type="text" name="longitude" value="" 
+                        placeholder="Enter Your Longitude" required>
+                    <font style="color:red">{{ $errors->has('longitude') ? $errors->first('longitude') : '' }} </font>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="my-input">Image</label>
-                  <img src="{{(!empty($editData->image))?url('public/images/services_images/'.$editData->image):url('public/images/not_found_img.png')}}" id="image" style="width:530px;height:200px">
-                  <input id="my-input" class="form-control" type="file" name="image" id="file" onchange="showImage(this,'image')" value=''>
-                </div> --}}
                 <div class="form-group">
-                <button type="submit" id="button" class="btn btn-success">{{(@$editData)?"Update":"Submit"}} </button>
+                    <label for="my-input">Ip</label>
+                    <input id="my-input" class="form-control" id="ip" type="text" name="ip" value="" 
+                        placeholder="Enter Your IP" required>
+                    <font style="color:red">{{ $errors->has('ip') ? $errors->first('ip') : '' }} </font>
+                </div>
+               
+                <div class="form-group">
+                <button type="submit" id="button" class="btn btn-success"> Submit </button>
                 </div>
           </form>
         </div>

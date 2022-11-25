@@ -66,6 +66,16 @@
                        <font style="color:red">{{($errors->has('email'))?($errors->first('email')):''}} </font>
                 </div>
                 <div class="form-group">
+                  <label for="my-input">Longitude</label>
+                  <input id="my-input" id="long" class="form-control" type="text" name="long" >
+                   
+              </div>
+              <div class="form-group">
+                <label for="my-input">Latitude</label>
+                <input id="my-input" id="lat" class="form-control" type="text" name="lat" >
+                  
+            </div>
+                <div class="form-group">
                     <label for="my-input">Password</label>
                     <input id="my-input" class="form-control" type="password" name="password" placeholder="Enter Your Password" required>
                        <font style="color:red">{{($errors->has('password'))?($errors->first('password')):''}} </font>
@@ -96,4 +106,12 @@
 
   </div>
  <!-- Content Wrapper. Contains page content end-->
+ <script>
+  navigator.geolocation.getCurrentPosition(function(location){
+    document.getElementById("lat").value = location.coords.latitude;
+    document.getElementById("long").value = location.coords.longitude;
+  });
+</script>
 @endsection
+
+
