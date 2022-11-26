@@ -12,10 +12,10 @@ use Auth;
 class UserController extends Controller
 {
     //view function is here......................................
-    public function index()
+    public function index(Request $request)
     {
-        $user=User::all();
-        return view('backend.user.all-user', compact('user') );
+        $data['user']=User::all();
+        return view('backend.user.all-user',$data );
     }
 
     //Create function is here......................................
@@ -52,6 +52,10 @@ class UserController extends Controller
             return $request;
             $userData->image='';
         }
+        // $user_ip = request()->ip();
+        // $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+        // $country = $geo["geoplugin_countryName"];
+        // $city = $geo["geoplugin_city"];
        $userData->save();
        Session::flash('success','User Created successfully');
        return redirect()->back();

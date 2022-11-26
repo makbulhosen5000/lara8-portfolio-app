@@ -201,5 +201,6 @@ function showImage(data, imgId){
         })
       });
 </script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js/?key=AIzaSyBY5p5e5P5e5PtJuJLl_nRpjefL0S094jdhEP8&libraries=places"></script> --}}
 
 

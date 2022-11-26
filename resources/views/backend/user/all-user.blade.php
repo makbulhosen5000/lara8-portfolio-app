@@ -47,6 +47,7 @@
                 </thead>
                 <tbody>
                     @foreach ($user as $item)
+                   
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->role}}</td>
@@ -60,15 +61,15 @@
                         </td>
                     </tr>
                     @endforeach
+                   
+                   
                 </tbody>
             </table>
             {{-- table end --}}
-
-
+    </div>
+    {{-- card end --}}
+    
 
 </div>
-{{-- card end --}}
-
-  </div>
  <!-- Content Wrapper. Contains page content end-->
 @endsection
