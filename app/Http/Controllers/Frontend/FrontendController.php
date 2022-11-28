@@ -89,25 +89,31 @@ class FrontendController extends Controller
     //__ Store Contact Us function__ //
     public function ContactStore(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
         $contactUs = new ContactUs();
         $contactUs->name = $request->name;
         $contactUs->phone = $request->phone;
         $contactUs->email = $request->email;
-        $contactUs->massage = $request->massage;
+        $contactUs->message = $request->message;
         $contactUs->save();
         $data = array(
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'massage' => $request->massage
+            'message' => $request->message,
         );
 
-        Mail::send('frontend.email.email-contact', $data, function ($massage) {
-            $massage->from('info@acelearningplus.co.uk', 'AceLearningPlus');
-            $massage->to('info@acelearningplus.co.uk');
-            $massage->subject('Thank you so much for contact with us');
+        Mail::send('frontend.email.email-contact', $data, function ($mess) {
+            $mess->from('mhaakash5000@gmail.com', 'CodingDuck');
+            $mess->to('mhaakash5000@gmail.com');
+            $mess->subject('Thank you so much for contact with us');
         });
-        Session::flash('success', 'Massage Sent Successfully');
+        Session::flash('success', 'Message Sent Successfully');
         return redirect()->back();
     }
 

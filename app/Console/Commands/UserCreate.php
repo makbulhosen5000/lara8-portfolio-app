@@ -3,26 +3,24 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use App\Support\DripEmailer;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
-
-class RexoitSalary extends Command
+class UserCreate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'rexoit:salary';
+    protected $signature = 'user:create';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Salary has sent';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -41,6 +39,7 @@ class RexoitSalary extends Command
      */
     public function handle()
     {
+        $input['role'] = $this->ask("Enter your UserType?");
         $input['name'] = $this->ask("Enter your name?");
         $input['phone'] = $this->ask("Enter your phone?");
         $input['email'] = $this->ask("Enter your email?");

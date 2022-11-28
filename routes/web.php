@@ -49,16 +49,15 @@ Auth::routes();
 
     //__frontend page routes start from here__//
     Route::get('/', [FrontendController::class, 'index']);
-    Route::get('/admin-dashboard', [HomeController::class, 'index']);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // Route::get('/home', [HomeController::class, 'dashboard'])->name('home');
+    Route::get('/admin-dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
     Route::get('about', [FrontendController::class, 'about'])->name('about');
-    Route::get('resume', [FrontendController::class, 'resume'])->name('resume');
-    Route::get('service', [FrontendController::class, 'service'])->name('service');
-    Route::get('portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
-    Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
-    Route::get('package', [FrontendController::class, 'package'])->name('package');
-    Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::get('/resume', [FrontendController::class, 'resume'])->name('resume');
+    Route::get('/service', [FrontendController::class, 'service'])->name('service');
+    Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
+    Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+    Route::get('/package', [FrontendController::class, 'package'])->name('package');
+    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::post('/contact-us', [FrontendController::class, 'ContactStore'])->name('contact.store');
 
     //__frontend page routes end from here__//
 

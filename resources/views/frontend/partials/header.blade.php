@@ -1,12 +1,13 @@
 <header class="header">
     <div class="container">
         <ul class="social-icons pt-3">
+            <li class="social-item"><a class="social-link text-light" href="{{ $contact->linkedin }}"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
             <li class="social-item"><a class="social-link text-light" href="{{ $contact->github }}"><i class="ti-github" aria-hidden="true"></i></a></li>
-            <li class="social-item"><a class="social-link text-light" href="{{ $contact->linkeind }}"><i class="ti-linkeind" aria-hidden="true"></i></a></li>
             <li class="social-item"><a class="social-link text-light" href="{{ $contact->facebook }}"><i class="ti-facebook" aria-hidden="true"></i></a></li>
             <li class="social-item"><a class="social-link text-light" href="{{ $contact->twitter }}"><i class="ti-twitter" aria-hidden="true"></i></a></li>
             <li class="social-item"><a class="social-link text-light" href="{{ $contact->google }}"><i class="ti-google" aria-hidden="true"></i></a></li>
             <li class="social-item"><a class="social-link text-light" href="{{ $contact->instagram }}"><i class="ti-instagram" aria-hidden="true"></i></a></li>
+            <li class="social-item"><a class="social-link text-light" href="{{ $contact->skype }}"><i class="ti-skype" aria-hidden="true"></i></a></li>
         </ul>  
         <div class="header-content">
             <h4 class="header-subtitle"> {{ $contact->intro }} </h4>
