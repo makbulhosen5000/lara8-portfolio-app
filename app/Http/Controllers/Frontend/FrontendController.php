@@ -93,25 +93,25 @@ class FrontendController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'message' => 'required',
+            'massage' => 'required',
         ]);
         $contactUs = new ContactUs();
         $contactUs->name = $request->name;
         $contactUs->phone = $request->phone;
         $contactUs->email = $request->email;
-        $contactUs->message = $request->message;
+        $contactUs->massage = $request->massage;
         $contactUs->save();
         $data = array(
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'message' => $request->message,
+            'massage' => $request->massage,
         );
 
-        Mail::send('frontend.email.email-contact', $data, function ($mess) {
-            $mess->from('mhaakash5000@gmail.com', 'CodingDuck');
-            $mess->to('mhaakash5000@gmail.com');
-            $mess->subject('Thank you so much for contact with us');
+        Mail::send('frontend.email.email-contact', $data, function ($mass) {
+            $mass->from('mhaakash5000@gmail.com', 'CodingDuck');
+            $mass->to('mhaakash5000@gmail.com');
+            $mass->subject('Thank you so much for contact with us');
         });
         Session::flash('success', 'Message Sent Successfully');
         return redirect()->back();
