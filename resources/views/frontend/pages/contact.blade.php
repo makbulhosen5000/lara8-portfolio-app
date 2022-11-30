@@ -32,7 +32,7 @@
                             <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}"  placeholder="Email *" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control @error('message') is-invalid @enderror" id="" type="text" name="message" value="{{ old('message') }}"  placeholder="Message *" rows="7" required></textarea>
+                            <textarea class="form-control @error('massage') is-invalid @enderror" id="" name="massage" value="{{ old('massage') }}"  placeholder="Message *" rows="7" required></textarea>
                         </div>
                         <div class="form-group ">
                             <button type="submit" class="form-control btn btn-primary" >Send Message</button>
@@ -48,7 +48,7 @@
                             <i class="ti-mobile icon-md"></i>
                         </div>
                         <div class="col-10 ">
-                            <h6 class="d-inline">Phone : <br> <span class="text-muted">+88{{ $contact->phone }}</span></h6>
+                            <h6 class="d-inline">Phone : <br> <span class="text-muted">+88{{ $contact->whatsapp }}</span></h6>
                         </div>
                     </div>
                     <div class="row mb-2">

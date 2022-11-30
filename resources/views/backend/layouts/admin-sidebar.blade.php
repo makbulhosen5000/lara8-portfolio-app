@@ -203,6 +203,18 @@
               <p>Work Documentary</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.recent.project.view')}} " class="nav-link {{($route=='resumes.recent.project.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Recent Project</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.total.project.view')}} " class="nav-link {{($route=='resumes.total.project.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Total Project</p>
+            </a>
+          </li>
       </ul>
     </li>
     {{-- contact end --}}

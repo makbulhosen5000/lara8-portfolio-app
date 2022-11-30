@@ -29,7 +29,7 @@ class SkillController extends Controller
          $validatedData = $request->validate([
              'skill' => 'required',
          ]);
-        $storeData=new skill();
+        $storeData=new Skill();
         $storeData->skill=$request->skill;
         $storeData->percentage=$request->percentage;
         $storeData->save();

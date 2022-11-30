@@ -13,9 +13,11 @@ use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\backend\QualificationController;
+use App\Http\Controllers\Backend\RecentProjectsController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\backend\SkillController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\TotalProjectsController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\backend\UserLocationController;
 use App\Http\Controllers\backend\WorkDocumentaryController;
@@ -200,6 +202,20 @@ Route::group(['middleware' => ['test']], function () {
         Route::get('/documentary/edit/{id}', [WorkDocumentaryController::class, 'edit'])->name('resumes.documentary.edit');
         Route::post('/documentary/update/{id}', [WorkDocumentaryController::class, 'update'])->name('resumes.documentary.update');
         Route::get('/documentary/destroy/{id}', [WorkDocumentaryController::class, 'destroy'])->name('resumes.documentary.destroy');
+         // Recent Project routes
+         Route::get('/Recent/Project/view', [RecentProjectsController::class, 'index'])->name('resumes.recent.project.view');
+         Route::get('/Recent/Project/create', [RecentProjectsController::class, 'create'])->name('resumes.recent.project.create');
+         Route::post('/Recent/Project/store', [RecentProjectsController::class, 'store'])->name('resumes.recent.project.store');
+         Route::get('/Recent/Project/edit/{id}', [RecentProjectsController::class, 'edit'])->name('resumes.recent.project.edit');
+         Route::post('/Recent/Project/update/{id}', [RecentProjectsController::class, 'update'])->name('resumes.recent.project.update');
+         Route::get('/Recent/Project/destroy/{id}', [RecentProjectsController::class, 'destroy'])->name('resumes.recent.project.destroy');
+         // Total Project routes
+         Route::get('/total/Project/view', [TotalProjectsController::class, 'index'])->name('resumes.total.project.view');
+         Route::get('/total/Project/create', [TotalProjectsController::class, 'create'])->name('resumes.total.project.create');
+         Route::post('/total/Project/store', [TotalProjectsController::class, 'store'])->name('resumes.total.project.store');
+         Route::get('/total/Project/edit/{id}', [TotalProjectsController::class, 'edit'])->name('resumes.total.project.edit');
+         Route::post('/total/Project/update/{id}', [TotalProjectsController::class, 'update'])->name('resumes.total.project.update');
+         Route::get('/total/Project/destroy/{id}', [TotalProjectsController::class, 'destroy'])->name('resumes.total.project.destroy');
     });
 
     //__ Services Management start __//

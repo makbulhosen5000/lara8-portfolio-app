@@ -26,7 +26,8 @@
         <div class="card-body ">
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
-                    <h5 class="display-5">User Email List</h5>
+                    <h5 class="display-5">Recent project List</h5>
+                  <a href="{{route('resumes.recent.project.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Recent Project</a>
                 </div>
             </div>
         </div>
@@ -36,24 +37,24 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Message</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Url</th>
+                        <th>Image</th>
                         <th>Action</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($userEmail as $key => $mail)
+                    @foreach ($recentProjects as $item)
                     <tr>
-                        <td>{{$key++}}</td>
-                        <td>{{$mail->name}}</td>
-                        <td>{{$mail->phone}}</td>
-                        <td>{{$mail->email}}</td>
-                        <td> <textarea name="massage" id="" cols="15" rows="5">{{$mail->massage}}</textarea></td>
+                        <td>{{$item->id}}</td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->description}}</td>
+                        <td>{{$item->url}}</td>
+                        <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
-                            <a href="{{route('user-email.destroy',$mail->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{route('resumes.recent.project.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                            <a href="{{route('resumes.recent.project.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

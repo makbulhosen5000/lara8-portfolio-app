@@ -16,7 +16,7 @@
                     <a href="{{ route('resume') }}" class="nav-link">Resume</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('service') }}" class="nav-link">Service</a>
+                    <a href="{{ route('portfolio') }}" class="nav-link">Portfolio</a>
                 </li>
             </ul>
             <ul class="navbar-nav brand">
@@ -28,13 +28,13 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('portfolio') }}" class="nav-link">Portfolio</a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('package') }}" class="nav-link">Package</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('service') }}" class="nav-link">Service</a>
                 </li>
                 <li class="nav-item last-item">
                     <a href="{{ route('contact') }}" class="nav-link">Contact</a>
