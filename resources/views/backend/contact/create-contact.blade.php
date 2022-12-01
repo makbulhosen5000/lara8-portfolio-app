@@ -26,7 +26,11 @@
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
-                            <h5 class="display-5">Create Contact</h5>
+                            @if(isset($editData))
+                            <h5 class="display-5">Edit Contact</h5>
+                              @else
+                              <h5 class="display-5">Create Contact</h5>
+                            @endif
                             <a href="{{ route('contacts.view') }}" class="btn btn-warning text-dark"> <i
                                     class="fa fa-list"></i> Contact List</a>
                         </div>

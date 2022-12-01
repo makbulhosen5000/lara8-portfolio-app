@@ -49,7 +49,7 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
-                        <td>{{$item->description}}</td>
+                        <td>{!! $item->description !!}</td>
                         <td>{{$item->url}}</td>
                         <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>

@@ -26,7 +26,11 @@
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
-                            <h5 class="display-5">Create Experinece</h5>
+                            @if(isset($editData))
+                            <h5 class="display-5">Edit Experience</h5>
+                              @else
+                              <h5 class="display-5">Create Experience</h5>
+                            @endif
                             <a href="{{ route('resumes.experience.view') }}" class="btn btn-warning text-dark"> <i
                                     class="fa fa-list"></i> Experinece List</a>
                         </div>

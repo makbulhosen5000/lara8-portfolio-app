@@ -26,10 +26,8 @@
         <div class="card-body ">
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
-                    <h5 class="display-5">Logo List</h5>
-                    @if($logoCount<1)
-                  <a href="{{route('logos.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Logo</a>
-                    @endif
+                    <h5 class="display-5">Total project List</h5>
+                  <a href="{{route('resumes.total.project.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Project</a>
                 </div>
             </div>
         </div>
@@ -38,19 +36,25 @@
                 {{-- table start --}}
                 <thead>
                     <tr>
-                        <th>SL</th>
-                        <th>Logo</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Url</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($logos as $logo)
+                    @foreach ($totalProjects as $item)
                     <tr>
-                        <td>{{$logo->id}}</td>
-                        <td><img src="{{asset('public/images/logo/'.$logo->image)}}" width="60px";height='60px' alt=""></td>
+                        <td>{{$item->id}}</td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->description}}</td>
+                        <td>{{$item->url}}</td>
+                        <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
-                            <a href="{{route('logos.edit',$logo->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
-                            <a href="{{route('logos.destroy',$logo->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{route('resumes.total.project.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                            <a href="{{route('resumes.total.project.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

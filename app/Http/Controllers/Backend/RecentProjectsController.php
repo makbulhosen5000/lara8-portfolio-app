@@ -29,6 +29,7 @@ class RecentProjectsController extends Controller
      {
          $validatedData = $request->validate([
              'title' => 'required',
+             'description' => 'required',
              'url' => 'required',
              'image' => 'required',
          ]);
@@ -64,7 +65,7 @@ class RecentProjectsController extends Controller
      //edit function is here.......................
      public function edit($id)
      {
-         $editData=Skill::find($id);
+         $editData=RecentProject::find($id);
          return view('backend.project.recent-project.recent-project-create',compact('editData'));
      }
  

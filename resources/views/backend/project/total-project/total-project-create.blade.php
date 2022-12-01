@@ -27,19 +27,19 @@
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
                             @if(isset($editData))
-                            <h5 class="display-5">Edit Language</h5>
+                            <h5 class="display-5">Edit Project</h5>
                               @else
-                              <h5 class="display-5">Create Language</h5>
+                              <h5 class="display-5">Create Project</h5>
                             @endif
-                            <a href="{{ route('resumes.language.view') }}" class="btn btn-warning text-dark"> <i
-                                    class="fa fa-list"></i> Language List</a>
+                            <a href="{{ route('resumes.total.project.view') }}" class="btn btn-warning text-dark"> <i
+                                    class="fa fa-list"></i> Total Project List</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 offset-3 pt-3">
-                    <form action="{{(@$editData)?route('resumes.language.update',$editData->id):route('resumes.language.store')}}  " method="POST" enctype="multipart/form-data">
+                    <form action="{{(@$editData)?route('resumes.total.project.update',$editData->id):route('resumes.total.project.store')}}  " method="POST" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -51,17 +51,30 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <label for="my-input">Language</label>
-                            <input id="my-input" class="form-control" type="text" name="language" value="{{@$editData->language}}" 
-                                placeholder="Enter Your language" required>
-                            <font style="color:red">{{ $errors->has('language') ? $errors->first('language') : '' }} </font>
-                        </div>  
+                            <label for="my-input">Title</label>
+                            <input id="my-input" class="form-control" type="text" name="title" value="{{@$editData->title}}" 
+                                placeholder="Enter Your Project Title" required>
+                            <font style="color:red">{{ $errors->has('title') ? $errors->first('title') : '' }} </font>
+                        </div>
                         <div class="form-group">
-                            <label for="my-input">Language Skill Percentage</label>
-                            <input id="my-input" class="form-control" type="text" name="percentage" value="{{@$editData->percentage}}" 
-                                placeholder="Enter Your Language Skill Percentage" required>
-                            <font style="color:red">{{ $errors->has('percentage') ? $errors->first('percentage') : '' }} </font>
-                        </div>        
+                          <label for="my-input">Description</label>
+                          <textarea  id="" cols="55" rows="10" name="description" placeholder="Enter Your Description">{{@$editData->description}}</textarea>
+                          <font style="color:red">{{ $errors->has('description') ? $errors->first('long_desc') : '' }}
+                          </font>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">URL</label>
+                            <input id="my-input" class="form-control" type="url" name="url" value="{{@$editData->url}}" 
+                                placeholder="Enter Your designation">
+                            <font style="color:red">{{ $errors->has('url') ? $errors->first('url') : '' }}
+                            </font>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Image</label>
+                          <img src="{{(!empty($editData->image))?url('public/images/project/'.$editData->image):url('public/images/not_found_img.png')}}" id="image" style="width:420px;height:200px">
+                          <input id="my-input" class="form-control" type="file" name="image" id="file" onchange="showImage(this,'image')" value=''>
+                          <font style="color:red">{{ $errors->has('image') ? $errors->first('image') : '' }} </font>
+                        </div>
                         <div class="form-group">
                             <button type="submit" id="button" class="btn btn-success">{{(@$editData)?"Update":"Submit"}}</button>
                         </div>

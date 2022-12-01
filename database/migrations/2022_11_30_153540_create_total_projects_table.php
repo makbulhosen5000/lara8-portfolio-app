@@ -16,6 +16,7 @@ class CreateTotalProjectsTable extends Migration
         Schema::create('total_projects', function (Blueprint $table) {
             $table->id();
             $table->string('total_project_id')->nullable();
+            $table->text('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('url')->nullable();

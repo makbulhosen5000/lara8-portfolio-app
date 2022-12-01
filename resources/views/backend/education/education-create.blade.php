@@ -26,9 +26,13 @@
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
-                            <h5 class="display-5">Create Qualification</h5>
+                            @if(isset($editData))
+                            <h5 class="display-5">Edit Qualification</h5>
+                              @else
+                              <h5 class="display-5">Create Qualification</h5>
+                            @endif
                             <a href="{{ route('resumes.education.view') }}" class="btn btn-warning text-dark"> <i
-                                    class="fa fa-list"></i> Qualification List</a>
+                                    class="fa fa-list"></i> Qualification List </a>
                         </div>
                     </div>
                 </div>
