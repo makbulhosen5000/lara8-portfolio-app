@@ -27,19 +27,19 @@
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
                             @if(isset($editData))
-                            <h5 class="display-5">Edit Qualification</h5>
+                            <h5 class="display-5">Edit Training</h5>
                               @else
-                              <h5 class="display-5">Create Qualification</h5>
+                              <h5 class="display-5">Create training</h5>
                             @endif
-                            <a href="{{ route('resumes.education.view') }}" class="btn btn-warning text-dark"> <i
-                                    class="fa fa-list"></i> Qualification List </a>
+                            <a href="{{ route('resumes.training.view') }}" class="btn btn-warning text-dark"> <i
+                                    class="fa fa-list"></i> Training List </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 offset-3 pt-3">
-                    <form action="{{(@$editData)?route('resumes.education.update',$editData->id):route('resumes.education.store')}}  " method="POST" enctype="multipart/form-data">
+                    <form action="{{(@$editData)?route('resumes.training.update',$editData->id):route('resumes.training.store')}}  " method="POST" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -51,10 +51,16 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <label for="my-input">Qualification</label>
-                            <input id="my-input" class="form-control" type="text" name="qualification" value="{{@$editData->qualification}}" 
-                                placeholder="Enter Your Education Qualification" required>
-                            <font style="color:red">{{ $errors->has('qualification') ? $errors->first('qualification') : '' }} </font>
+                            <label for="my-input">Training</label>
+                            <input id="my-input" class="form-control" type="text" name="training" value="{{@$editData->training}}" 
+                                placeholder="Enter Your  Course Name" required>
+                            <font style="color:red">{{ $errors->has('training') ? $errors->first('training') : '' }} </font>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Institute</label>
+                            <input id="my-input" class="form-control" type="text" name="institute" value="{{@$editData->institute}}" 
+                                placeholder="Enter Your training Institute" required>
+                            <font style="color:red">{{ $errors->has('institute') ? $errors->first('institute') : '' }} </font>
                         </div>
                         <div class="form-group">
                             <label for="my-input">Deadline</label>

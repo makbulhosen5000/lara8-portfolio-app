@@ -38,6 +38,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Qualification</th>
+                        <th>Institue</th>
                         <th>Deadline</th>
                         <th>Address</th>
                         <th>Description</th>
@@ -49,13 +50,15 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->qualification}}</td>
+                        <td>{{$item->institute}}</td>
                         <td>{{$item->deadline}}</td>
                         <td>{{$item->address}}</td>
-                        <td>
+                        <td>{!! $item->description !!}</td>
+                        {{-- <td>
                           <textarea name="" id="" cols="14" rows="5" style="text-align: justify">
                             {{ $item->description }}
                           </textarea>
-                        </td>
+                        </td> --}}
                         <td width="15%">
                             <a href="{{route('resumes.education.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
                             <a href="{{route('resumes.education.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>

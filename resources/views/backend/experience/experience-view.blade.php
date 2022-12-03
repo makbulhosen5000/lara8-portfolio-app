@@ -53,11 +53,12 @@
                         <td>{{$item->deadline}}</td>
                         <td>{{$item->company_name}}</td>
                         <td>{{$item->company_address}}</td>
-                        <td>
+                        <td>{{!! $item->description !!}}</td>
+                        {{-- <td>
                           <textarea name="" id="" cols="14" rows="5" style="text-align: justify">
                             {{ $item->description }}
                           </textarea>
-                        </td>
+                        </td> --}}
                         <td>
                             <a href="{{route('resumes.experience.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
                             <a href="{{route('resumes.experience.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>

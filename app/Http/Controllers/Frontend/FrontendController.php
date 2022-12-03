@@ -22,7 +22,11 @@ use App\Models\Medicine;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Qualification;
+use App\Models\ReactProject;
+use App\Models\RecentProject;
 use App\Models\Skill;
+use App\Models\TotalProject;
+use App\Models\Training;
 use App\Models\WorkDocumentary;
 use Session;
 use Mail;
@@ -34,6 +38,8 @@ class FrontendController extends Controller
         $data['contact'] = Contact::first();
         $data['experiences'] = Experience::all();
         $data['qualifications'] = Qualification::all();
+        $data['qualifications'] = Qualification::all();
+        $data['trainings'] = Training::all();
         $data['skills'] = Skill::all();
         $data['languageSkill'] = Language::all();
         $data['workDocumentaries'] = WorkDocumentary::first();
@@ -50,6 +56,7 @@ class FrontendController extends Controller
         $data['contact'] = Contact::first();
         $data['experiences'] = Experience::all();
         $data['qualifications'] = Qualification::all();
+        $data['trainings'] = Training::all();
         $data['skills'] = Skill::all();
         $data['languageSkill'] = Language::all();
         return view('frontend.pages.resume',$data);
@@ -65,6 +72,9 @@ class FrontendController extends Controller
     //__ portfolio function is here __//
     public function portfolio(){
         $data['contact'] = Contact::first();
+        $data['reactProjects'] = ReactProject::all();
+        $data['recentProjects'] = RecentProject::all();
+        $data['laravelProjects'] = TotalProject::all();
         return view('frontend.pages.portfolio',$data);
     }
 

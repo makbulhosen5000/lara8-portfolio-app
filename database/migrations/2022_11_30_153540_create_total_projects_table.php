@@ -17,9 +17,10 @@ class CreateTotalProjectsTable extends Migration
             $table->id();
             $table->string('total_project_id')->nullable();
             $table->text('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->string('url')->nullable();
+            $table->string('github')->nullable();
             $table->timestamps();
         });
     }

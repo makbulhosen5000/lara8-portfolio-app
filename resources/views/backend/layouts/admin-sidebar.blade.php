@@ -182,7 +182,13 @@
           <li class="nav-item">
             <a href="{{route('resumes.education.view')}} " class="nav-link {{($route=='resumes.education.view')?'active':''}}">
               <i class="far fa-circle nav-icon"></i>
-              <p>Qualification</p>
+              <p>Education</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.training.view')}} " class="nav-link {{($route=='resumes.training.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Training</p>
             </a>
           </li>
           <li class="nav-item">
@@ -212,7 +218,13 @@
           <li class="nav-item">
             <a href="{{route('resumes.total.project.view')}} " class="nav-link {{($route=='resumes.total.project.view')?'active':''}}">
               <i class="far fa-circle nav-icon"></i>
-              <p>Total Project</p>
+              <p>Laravel Project</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('resumes.react.project.view')}} " class="nav-link {{($route=='resumes.react.project.view')?'active':''}}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>React Project</p>
             </a>
           </li>
       </ul>

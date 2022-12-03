@@ -16,6 +16,7 @@ class CreateEducationTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('qualification')->nullable();
+            $table->string('institute')->nullable();
             $table->string('deadline')->nullable();
             $table->string('address')->nullable();
             $table->text('description')->nullable();

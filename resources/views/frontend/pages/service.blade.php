@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body px-4 py-3">
                         <h5 class="mb-3 card-title text-dark">{{$service->title }}</h5>
-                        <P class="subtitle">{{ $service->description }}</P>
+                        <P class="subtitle">{!! $service->description !!}</P>
                     </div>
                 </div>
             </div>           

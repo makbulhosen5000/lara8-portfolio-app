@@ -27,19 +27,19 @@
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
                             @if(isset($editData))
-                            <h5 class="display-5">Edit Recent Project</h5>
+                            <h5 class="display-5">Edit React Project</h5>
                               @else
-                              <h5 class="display-5">Create Recent Project</h5>
+                              <h5 class="display-5">Create React Project</h5>
                             @endif
-                            <a href="{{ route('resumes.recent.project.view') }}" class="btn btn-warning text-dark"> <i
-                                    class="fa fa-list"></i> Recent Project List</a>
+                            <a href="{{ route('resumes.react.project.view') }}" class="btn btn-warning text-dark"> <i
+                                    class="fa fa-list"></i> React Project List</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 offset-3 pt-3">
-                    <form action="{{(@$editData)?route('resumes.recent.project.update',$editData->id):route('resumes.recent.project.store')}}  " method="POST" enctype="multipart/form-data">
+                    <form action="{{(@$editData)?route('resumes.react.project.update',$editData->id):route('resumes.react.project.store')}}  " method="POST" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -53,26 +53,26 @@
                         <div class="form-group">
                             <label for="my-input">Title</label>
                             <input id="my-input" class="form-control" type="text" name="title" value="{{@$editData->title}}" 
-                                placeholder="Enter Your Project Title">
+                                placeholder="Enter Your Project Title" required>
                             <font style="color:red">{{ $errors->has('title') ? $errors->first('title') : '' }} </font>
                         </div>
                         <div class="form-group">
                           <label for="my-input">Description</label>
-                          <textarea  id="" cols="55" rows="10" name="description" placeholder="Enter Your Description">{!! @$editData->description !!}</textarea>
+                          <textarea  id="" cols="55" rows="10" name="description" placeholder="Enter Your Description">{{@$editData->description}}</textarea>
                           <font style="color:red">{{ $errors->has('description') ? $errors->first('long_desc') : '' }}
                           </font>
                         </div>
                         <div class="form-group">
                             <label for="my-input">Project URL</label>
                             <input id="my-input" class="form-control" type="url" name="url" value="{{@$editData->url}}" 
-                                placeholder="Enter Your designation" required>
+                                placeholder="Enter Your designation">
                             <font style="color:red">{{ $errors->has('url') ? $errors->first('url') : '' }}
                             </font>
                         </div>
                         <div class="form-group">
                             <label for="my-input">Github URL</label>
                             <input id="my-input" class="form-control" type="url" name="github" value="{{@$editData->github}}" 
-                                placeholder="Enter Your designation" required>
+                                placeholder="Enter Your designation">
                             <font style="color:red">{{ $errors->has('github') ? $errors->first('github') : '' }}
                             </font>
                         </div>

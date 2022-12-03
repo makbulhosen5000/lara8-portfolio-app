@@ -39,7 +39,8 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Url</th>
+                        <th>Project Url</th>
+                        <th>Github Url</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
@@ -51,6 +52,7 @@
                         <td>{{$item->title}}</td>
                         <td>{!! $item->description !!}</td>
                         <td>{{$item->url}}</td>
+                        <td>{{$item->github}}</td>
                         <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
                             <a href="{{route('resumes.recent.project.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>

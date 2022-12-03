@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\backend\QualificationController;
+use App\Http\Controllers\backend\TrainingController;
+use App\Http\Controllers\Backend\ReactProjectController;
 use App\Http\Controllers\Backend\RecentProjectsController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\backend\SkillController;
@@ -181,6 +183,13 @@ Route::group(['middleware' => ['test']], function () {
         Route::get('/qualification/edit/{id}', [QualificationController::class, 'edit'])->name('resumes.education.edit');
         Route::post('/qualification/update/{id}', [QualificationController::class, 'update'])->name('resumes.education.update');
         Route::get('/qualification/destroy/{id}', [QualificationController::class, 'destroy'])->name('resumes.education.destroy');
+         // training routes
+         Route::get('/training/view', [TrainingController::class, 'index'])->name('resumes.training.view');
+         Route::get('/training/create', [TrainingController::class, 'create'])->name('resumes.training.create');
+         Route::post('/training/store', [TrainingController::class, 'store'])->name('resumes.training.store');
+         Route::get('/training/edit/{id}', [TrainingController::class, 'edit'])->name('resumes.training.edit');
+         Route::post('/training/update/{id}', [TrainingController::class, 'update'])->name('resumes.training.update');
+         Route::get('/training/destroy/{id}', [TrainingController::class, 'destroy'])->name('resumes.training.destroy');
         // skill routes
         Route::get('/skill/view', [SkillController::class, 'index'])->name('resumes.skill.view');
         Route::get('/skill/create', [SkillController::class, 'create'])->name('resumes.skill.create');
@@ -203,19 +212,26 @@ Route::group(['middleware' => ['test']], function () {
         Route::post('/documentary/update/{id}', [WorkDocumentaryController::class, 'update'])->name('resumes.documentary.update');
         Route::get('/documentary/destroy/{id}', [WorkDocumentaryController::class, 'destroy'])->name('resumes.documentary.destroy');
          // Recent Project routes
-         Route::get('/Recent/Project/view', [RecentProjectsController::class, 'index'])->name('resumes.recent.project.view');
-         Route::get('/Recent/Project/create', [RecentProjectsController::class, 'create'])->name('resumes.recent.project.create');
-         Route::post('/Recent/Project/store', [RecentProjectsController::class, 'store'])->name('resumes.recent.project.store');
-         Route::get('/Recent/Project/edit/{id}', [RecentProjectsController::class, 'edit'])->name('resumes.recent.project.edit');
-         Route::post('/Recent/Project/update/{id}', [RecentProjectsController::class, 'update'])->name('resumes.recent.project.update');
-         Route::get('/Recent/Project/destroy/{id}', [RecentProjectsController::class, 'destroy'])->name('resumes.recent.project.destroy');
+         Route::get('/recent/project/view', [RecentProjectsController::class, 'index'])->name('resumes.recent.project.view');
+         Route::get('/recent/project/create', [RecentProjectsController::class, 'create'])->name('resumes.recent.project.create');
+         Route::post('/recent/project/store', [RecentProjectsController::class, 'store'])->name('resumes.recent.project.store');
+         Route::get('/recent/project/edit/{id}', [RecentProjectsController::class, 'edit'])->name('resumes.recent.project.edit');
+         Route::post('/recent/project/update/{id}', [RecentProjectsController::class, 'update'])->name('resumes.recent.project.update');
+         Route::get('/recent/project/destroy/{id}', [RecentProjectsController::class, 'destroy'])->name('resumes.recent.project.destroy');
          // Total Project routes
-         Route::get('/total/Project/view', [TotalProjectsController::class, 'index'])->name('resumes.total.project.view');
-         Route::get('/total/Project/create', [TotalProjectsController::class, 'create'])->name('resumes.total.project.create');
-         Route::post('/total/Project/store', [TotalProjectsController::class, 'store'])->name('resumes.total.project.store');
-         Route::get('/total/Project/edit/{id}', [TotalProjectsController::class, 'edit'])->name('resumes.total.project.edit');
-         Route::post('/total/Project/update/{id}', [TotalProjectsController::class, 'update'])->name('resumes.total.project.update');
+         Route::get('/total/project/view', [TotalProjectsController::class, 'index'])->name('resumes.total.project.view');
+         Route::get('/total/project/create', [TotalProjectsController::class, 'create'])->name('resumes.total.project.create');
+         Route::post('/total/project/store', [TotalProjectsController::class, 'store'])->name('resumes.total.project.store');
+         Route::get('/total/project/edit/{id}', [TotalProjectsController::class, 'edit'])->name('resumes.total.project.edit');
+         Route::post('/total/project/update/{id}', [TotalProjectsController::class, 'update'])->name('resumes.total.project.update');
          Route::get('/total/Project/destroy/{id}', [TotalProjectsController::class, 'destroy'])->name('resumes.total.project.destroy');
+         // React Project routes
+         Route::get('/react/project/view', [ReactProjectController::class, 'index'])->name('resumes.react.project.view');
+         Route::get('/react/project/create', [ReactProjectController::class, 'create'])->name('resumes.react.project.create');
+         Route::post('/react/project/store', [ReactProjectController::class, 'store'])->name('resumes.react.project.store');
+         Route::get('/react/project/edit/{id}', [ReactProjectController::class, 'edit'])->name('resumes.react.project.edit');
+         Route::post('/react/project/update/{id}', [ReactProjectController::class, 'update'])->name('resumes.react.project.update');
+         Route::get('/react/project/destroy/{id}', [ReactProjectController::class, 'destroy'])->name('resumes.react.project.destroy');
     });
 
     //__ Services Management start __//

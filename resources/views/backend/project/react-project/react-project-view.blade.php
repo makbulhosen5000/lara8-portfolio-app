@@ -26,10 +26,8 @@
         <div class="card-body ">
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
-                    <h5 class="display-5">Service List</h5>
-
-                  <a href="{{route('services.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Service</a>
-
+                    <h5 class="display-5">React project List</h5>
+                  <a href="{{route('resumes.react.project.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create React Project</a>
                 </div>
             </div>
         </div>
@@ -38,22 +36,27 @@
                 {{-- table start --}}
                 <thead>
                     <tr>
-                        <th>SL</th>
+                        <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
-                        {{-- <th>Image</th> --}}
+                        <th>Project Url</th>
+                        <th>Github Url</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($allData as $item)
+                    @foreach ($reactProjects as $item)
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
-                        <td width="50%">{!! $item->description !!}</td>
+                        <td>{!! $item->description !!}</td>
+                        <td>{{$item->url}}</td>
+                        <td>{{$item->github}}</td>
+                        <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
-                            <a href="{{route('services.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
-                            <a href="{{route('services.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                            <a href="{{route('resumes.react.project.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>
+                            <a href="{{route('resumes.react.project.destroy',$item->id)}} " id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

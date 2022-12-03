@@ -27,12 +27,12 @@
                     <div class="row">
                         <div class="col-md-12  d-flex justify-content-between align-items-center">
                             @if(isset($editData))
-                            <h5 class="display-5">Edit Project</h5>
+                            <h5 class="display-5">Edit Laravel Project</h5>
                               @else
-                              <h5 class="display-5">Create Project</h5>
+                              <h5 class="display-5">Create Laravel Project</h5>
                             @endif
                             <a href="{{ route('resumes.total.project.view') }}" class="btn btn-warning text-dark"> <i
-                                    class="fa fa-list"></i> Total Project List</a>
+                                    class="fa fa-list"></i> Laravel Project List </a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,17 @@
                           </font>
                         </div>
                         <div class="form-group">
-                            <label for="my-input">URL</label>
+                            <label for="my-input">Project URL</label>
                             <input id="my-input" class="form-control" type="url" name="url" value="{{@$editData->url}}" 
                                 placeholder="Enter Your designation">
                             <font style="color:red">{{ $errors->has('url') ? $errors->first('url') : '' }}
+                            </font>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Github URL</label>
+                            <input id="my-input" class="form-control" type="url" name="github" value="{{@$editData->github}}" 
+                                placeholder="Enter Your designation">
+                            <font style="color:red">{{ $errors->has('github') ? $errors->first('github') : '' }}
                             </font>
                         </div>
                         <div class="form-group">

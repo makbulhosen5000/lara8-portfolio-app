@@ -28,15 +28,15 @@ class TotalProjectsController extends Controller
      public function store(Request $request)
      {
          $validatedData = $request->validate([
-             'title' => 'required',
-             'description' => 'required',
              'url' => 'required',
+             'github' => 'required',
              'image' => 'required',
          ]);
         $storeData=new TotalProject();
         $storeData->title=$request->title;
         $storeData->description=$request->description;
         $storeData->url=$request->url;
+        $storeData->github=$request->github;
         if($request->hasFile('image')){
             $file=$request->file('image');
             $extension=$file->getClientOriginalExtension();
@@ -76,6 +76,7 @@ class TotalProjectsController extends Controller
          $updateData->title=$request->title;
          $updateData->description=$request->description;
          $updateData->url=$request->url;
+         $updateData->github=$request->github;
          if($request->hasFile('image')){
             $file=$request->file('image');
             $extension=$file->getClientOriginalExtension();

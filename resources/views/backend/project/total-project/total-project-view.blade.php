@@ -26,8 +26,8 @@
         <div class="card-body ">
             <div class="row">
                 <div class="col-md-12  d-flex justify-content-between align-items-center">
-                    <h5 class="display-5">Total project List</h5>
-                  <a href="{{route('resumes.total.project.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Project</a>
+                    <h5 class="display-5">Laravel project List</h5>
+                  <a href="{{route('resumes.total.project.create')}}" class="btn btn-warning text-dark"><i class="fa fa-plus-circle"></i>Create Laravel Project</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,8 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Url</th>
+                        <th>Project Url</th>
+                        <th>Github Url</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
@@ -49,8 +50,9 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
-                        <td>{{$item->description}}</td>
+                        <td>{!! $item->description !!}</td>
                         <td>{{$item->url}}</td>
+                        <td>{{$item->github}}</td>
                         <td><img src="{{asset('public/images/project/'.$item->image)}}" width="60px";height='60px' alt=""></td>
                         <td>
                             <a href="{{route('resumes.total.project.edit',$item->id)}}" class="btn btn-warning" title="Edit"><i class="fa fa-user-edit"></i></a>

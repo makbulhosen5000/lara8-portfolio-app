@@ -40,6 +40,23 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                         <div class="mt-2">
+                             <h4>Training Certificate</h4>
+                             <span class="line"></span>  
+                         </div>
+                     </div>
+                     @foreach ($trainings as $training)
+                     <div class="card-body">
+                         <h6 class="title text-danger">{{ $training->training }}</h6>
+                         <P>{{ $training->deadline }}</P>
+                         <P class="subtitle">{{ $training->address }}</P>
+                         <P class="subtitle">{{ $training->description }}</P>
+                         <hr>                        
+                     </div>
+                     @endforeach
+                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="card">

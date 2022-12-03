@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecentProjectsTable extends Migration
+class CreateTrainingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateRecentProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recent_projects', function (Blueprint $table) {
+        Schema::create('trainings', function (Blueprint $table) {
             $table->id();
-            $table->integer('recent_project_id')->nullable();
-            $table->string('title')->nullable();
+            $table->string('training')->nullable();
+            $table->string('institute')->nullable();
+            $table->string('deadline')->nullable();
+            $table->string('address')->nullable();
             $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->string('url')->nullable();
-            $table->string('github')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateRecentProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recent_projects');
+        Schema::dropIfExists('trainings');
     }
 }

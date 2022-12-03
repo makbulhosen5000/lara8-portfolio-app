@@ -55,11 +55,12 @@
                         <td>{{$item->title}}</td>
                         <td>{{$item->slug}}</td>
                         <td>{{$item->short_desc}}</td>
-                        <td>
+                        <td>{!! $item->description !!}</td>
+                        {{-- <td>
                           <textarea name="description" id="" cols="" rows="" style="text-align: justify">
-                          {{$item->description}}
+                           {{!! $item->description !!}}
                         </textarea>
-                        </td>
+                        </td> --}}
                         <td>{{$item->date}}</td>
                         <td><img src="{{(!empty($item->image))?url('public/images/news/'.$item->image):url('public/images/not_found_img.png')}}" id="image" width="60px";height='60px'></td>
                         <td>

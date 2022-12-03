@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\RecentProject;
-use App\Models\Skill;
+use App\Models\ReactProject;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
 
-class RecentProjectsController extends Controller
+class ReactProjectController extends Controller
 {
      //view function is here......................................
      public function index()
      {
-         $recentProjects=RecentProject::all();
-         return view('backend.project.recent-project.recent-project-view', compact('recentProjects'));
+         $reactProjects=ReactProject::all();
+         return view('backend.project.react-project.react-project-view', compact('reactProjects'));
      }
  
        //Create function is here......................................
        public function create()
        {
-           return view('backend.project.recent-project.recent-project-create');
+           return view('backend.project.react-project.react-project-create');
        }
  
      //Store function is here..........................
@@ -32,7 +31,7 @@ class RecentProjectsController extends Controller
              'github' => 'required',
              'image' => 'required',
          ]);
-        $storeData=new RecentProject();
+        $storeData=new ReactProject();
         $storeData->title=$request->title;
         $storeData->description=$request->description;
         $storeData->url=$request->url;
@@ -48,7 +47,7 @@ class RecentProjectsController extends Controller
             $storeData->image='';
         }
         $storeData->save();
-        Session::flash('success','Recent Project Created successfully');
+        Session::flash('success','React Project Created successfully');
         return redirect()->back();
      }
  
@@ -65,14 +64,14 @@ class RecentProjectsController extends Controller
      //edit function is here.......................
      public function edit($id)
      {
-         $editData=RecentProject::find($id);
-         return view('backend.project.recent-project.recent-project-create',compact('editData'));
+         $editData=ReactProject::find($id);
+         return view('backend.project.react-project.react-project-create',compact('editData'));
      }
  
      //update function is here.......................
      public function update(Request $request, $id)
      {
-         $updateData=RecentProject::find($id);
+         $updateData=ReactProject::find($id);
          $updateData->title=$request->title;
          $updateData->description=$request->description;
          $updateData->url=$request->url;
@@ -85,19 +84,19 @@ class RecentProjectsController extends Controller
             $updateData->image=$myImage;
         }
          $updateData->save();
-         Session::flash('success','Recent Project Updated Successfully');
+         Session::flash('success','react Project Updated Successfully');
          return redirect()->back();
      }
  
      //delete function is here...........................
      public function destroy($id)
      {
-         $deleteData=RecentProject::find($id);
+         $deleteData=ReactProject::find($id);
          if(file_exists('public/images/project/'.$deleteData->image)AND ! empty($deleteData->image))
          {
           unlink('public/images/project/'.$deleteData->image);
          }
          $deleteData->delete();
-        return redirect()->route('resumes.recent.project.view');
+        return redirect()->route('resumes.react.project.view');
      }
 }

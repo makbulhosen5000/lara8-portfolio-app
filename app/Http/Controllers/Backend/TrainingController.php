@@ -3,44 +3,43 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Education;
-use App\Models\Qualification;
+use App\Models\Training;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
 
-class QualificationController extends Controller
+class TrainingController extends Controller
 {
      //view function is here......................................
      public function index()
      {
-         $education=Qualification::all();
-         return view('backend.education.education-view', compact('education'));
+         $training=Training::all();
+         return view('backend.training.training-view', compact('training'));
      }
  
        //Create function is here......................................
        public function create()
        {
-           return view('backend.education.education-create');
+           return view('backend.training.training-create');
        }
  
      //Store function is here..........................
      public function store(Request $request)
      {
          $validatedData = $request->validate([
-             'qualification' => 'required',
+             'training' => 'required',
              'institute' => 'required',
              'deadline' => 'required',
              'address' => 'required',
          ]);
-        $storeData=new Qualification();
-        $storeData->qualification=$request->qualification;
+        $storeData=new Training();
+        $storeData->training=$request->training;
         $storeData->institute=$request->institute;
         $storeData->deadline=$request->deadline;
         $storeData->address=$request->address;
         $storeData->description=$request->description;
         $storeData->save();
-        Session::flash('success','Qualification Created successfully');
+        Session::flash('success','Training Created successfully');
         return redirect()->back();
      }
  
@@ -57,29 +56,29 @@ class QualificationController extends Controller
      //edit function is here.......................
      public function edit($id)
      {
-         $editData=Qualification::find($id);
-         return view('backend.education.education-create',compact('editData'));
+         $editData=Training::find($id);
+         return view('backend.training.training-create',compact('editData'));
      }
  
      //update function is here.......................
      public function update(Request $request, $id)
      {
-         $updateData=Qualification::find($id);
-         $updateData->qualification=$request->qualification;
+         $updateData=Training::find($id);
+         $updateData->training=$request->training;
          $updateData->institute=$request->institute;
          $updateData->deadline=$request->deadline;
          $updateData->address=$request->address;
          $updateData->description=$request->description;
          $updateData->save();
-         Session::flash('success','Qualification Updated Successfully');
+         Session::flash('success','Training Updated Successfully');
          return redirect()->back();
      }
  
      //delete function is here...........................
      public function destroy($id)
      {
-         $deleteData=Qualification::find($id);
+         $deleteData=Training::find($id);
          $deleteData->delete();
-        return redirect()->route('resumes.education.view');
+        return redirect()->route('resumes.training.view');
      }
 }

@@ -7,16 +7,16 @@
         <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                    <a href="{{ route('resume') }}" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('portfolio') }}" class="nav-link active">Portfolio</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('about') }}" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('resume') }}" class="nav-link">Resume</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('portfolio') }}" class="nav-link">Portfolio</a>
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav brand">
