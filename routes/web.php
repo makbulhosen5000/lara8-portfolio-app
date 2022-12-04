@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Events\Message;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -25,6 +25,7 @@ use App\Http\Controllers\backend\UserLocationController;
 use App\Http\Controllers\backend\WorkDocumentaryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -52,6 +53,7 @@ Auth::routes();
 
 
     //__frontend page routes start from here__//
+
     Route::get('/', [FrontendController::class, 'index']);
     Route::get('/admin-dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
     Route::get('about', [FrontendController::class, 'about'])->name('about');
@@ -62,6 +64,14 @@ Auth::routes();
     Route::get('/package', [FrontendController::class, 'package'])->name('package');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::post('/contact-us', [FrontendController::class, 'ContactStore'])->name('contact.store');
+    Route::get('/chat', [FrontendController::class, 'chat']);
+    
+    //route for chat application
+
+    Route::post('send-message',function (Request $request){
+        event(new Message($request->username, $request->message));
+        return ['success' => true];
+    });
 
     //__frontend page routes end from here__//
 

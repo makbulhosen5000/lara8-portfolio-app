@@ -17,8 +17,6 @@
             <h1 class="animate__animated animate__bounce title-name">{{ $contact->name }}</h1>
             <h6 class="header-mono" >{{ $contact->designation }}</h6>
             <a href="{{ asset('public/images/resume/'.$contact->resume) }}"><button class="btn btn-primary btn-rounded"><i class="pr-2"></i>Download My Resume</button></a>
-        </div>
-
- 
+        </div> 
     </div>
 </header>

@@ -96,6 +96,12 @@ class FrontendController extends Controller
         return view('frontend.pages.contact',$data);
     }
 
+     //__ contact function is here __//
+     public function chat(){
+        $data['contact'] = Contact::first();
+        return view('frontend.pages.chat.chat',$data);
+    }
+
     //__ Store Contact Us function__ //
     public function ContactStore(Request $request)
     {
