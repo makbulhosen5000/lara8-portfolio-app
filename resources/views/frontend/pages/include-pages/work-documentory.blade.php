@@ -54,9 +54,9 @@
 
 <section class="section bg-dark py-5">
     
-    <div class="whatsup">
-    <a href="{{ URL::to('/chat') }}" target="_blank"><img src="{{asset('public')}}/images/whatsapp/chat.png" width="100px" class="whatsapp_float_btn" alt=""></a>
-    </div>
+    {{-- <div class="whatsup">
+    <a href="{{ URL::to('/chat') }}"><img src="{{asset('public')}}/images/whatsapp/chat.png" width="100px" class="whatsapp_float_btn" alt=""></a>
+    </div> --}}
 
     <div class="container text-center">
         <h2 class="text-light mb-5 font-weight-normal">I Am Available For FreeLance</h2>

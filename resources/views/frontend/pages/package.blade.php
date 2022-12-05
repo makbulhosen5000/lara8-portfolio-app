@@ -6,6 +6,7 @@
 @section('content')
 <section class="section bg-custom-gray" id="price">
     <div class="container">
+         <h2 style="text-align: center">This Page Is Under Development</h2>
         <h1 class="mb-5"><span class="text-danger">Packs</span> Pricing</h1>
         <div class="row align-items-center">
             <div class="col-md-6 col-lg-3">

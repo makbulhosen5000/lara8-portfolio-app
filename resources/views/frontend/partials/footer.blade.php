@@ -1,3 +1,5 @@
+
+{{-- @include('frontend.pages.chat.chat') --}}
 <footer class="footer py-3">
     <div class="container">
         <h3 class="small mb-0 text-light text-center">

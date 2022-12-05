@@ -1,3 +1,4 @@
+
 {{-- Start Navbar  --}}
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
     <div class="container">
@@ -7,23 +8,23 @@
         <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="{{ route('resume') }}" class="nav-link">Resume</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('portfolio') }}" class="nav-link active">Portfolio</a>
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('about') }}" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                    <a href="{{ route('resume') }}" class="nav-link active">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('portfolio') }}" class="nav-link active">Portfolio</a>
                 </li>
             </ul>
             <ul class="navbar-nav brand">
                 <img src="{{ asset('public/images/image/'.$contact->image) }}" height="180" alt="" class="brand-img">
                 <li class="brand-txt">
-                    <h5 class="brand-title title-name">{{ $contact->name }}</h5>
-                    <div class=" title-name">{{ $contact->designation }}</div>
+                    <h5 class="brand-title title-name1">{{ $contact->name }}</h5>
+                    <div class="title-name1">{{ $contact->designation }}</div>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

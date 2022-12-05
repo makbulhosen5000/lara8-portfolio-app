@@ -10,7 +10,7 @@
         {{-- portfolio start --}}
         <div class="portfolio">
             <div class="filters">
-                <a href="#" data-filter=".advertising" class="">
+                <a href="#" data-filter=".advertising" class="active">
                     Recent Project
                 </a>
                 <a href="#" data-filter=".web">
@@ -19,7 +19,7 @@
                 <a href="#" data-filter=".branding" class="">
                     React Project
                 </a>
-                <a href="#" data-filter=".new" class="active">
+                <a href="#" data-filter=".new" class="">
                     Whole Project
                 </a>
             </div>
