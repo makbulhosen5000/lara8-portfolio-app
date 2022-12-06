@@ -3,7 +3,8 @@
 <html>
 <head>
 	<title>Sign Up in to AceLearningPluse</title>
-   <!--Made with love by Mutiullah Samim -->
+      
+	<!--login form start-->
 
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -13,11 +14,13 @@
 
 	<!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    <!--login form start-->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-image: url('public/images/logo/login.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;

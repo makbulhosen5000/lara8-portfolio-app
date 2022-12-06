@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Sign-in to CodingDuck</title>
    <!--Made with love by Mutiullah Samim -->
-
+   <link rel="icon" type="image/x-icon" href="{{ asset('public/frontend') }}/assets/imgs/logo.png">
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -18,7 +19,7 @@
         @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-image: url('public/images/logo/login.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
@@ -110,11 +111,11 @@ margin-left: 4px;
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
+				{{-- <div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
 					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
+				</div> --}}
 			</div>
 			<div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
@@ -146,17 +147,14 @@ margin-left: 4px;
 	
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
-						<p><a href="{{ route('password.request') }}" style="color: #FFC312">Forget Your Password?</a></p>
+						{{-- <p><a href="{{ route('password.request') }}" style="color: #FFC312">Forget Your Password?</a></p> --}}
 						
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links ">
-					Do you have an account?<a href="{{ route('register') }}" class="text-warning">Click Here</a>
-				</div>
 				{{-- <div class="d-flex justify-content-center links ">
-					Forget Your Password?<a href="{{ route('password.request') }}" class="text-warning">Click Here</a>
+					Do you have an account?<a href="{{ route('register') }}" class="text-warning">Click Here</a>
 				</div> --}}
 			</div>
 		</div>

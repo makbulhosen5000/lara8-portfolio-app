@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
+use App\Models\WorkDocumentary;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

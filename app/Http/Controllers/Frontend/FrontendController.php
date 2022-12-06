@@ -54,6 +54,7 @@ class FrontendController extends Controller
     //__ resume function is here __//
     public function resume(){
         $data['contact'] = Contact::first();
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['experiences'] = Experience::all();
         $data['qualifications'] = Qualification::all();
         $data['trainings'] = Training::all();
@@ -64,6 +65,7 @@ class FrontendController extends Controller
 
      //__ service function is here __//
      public function service(){
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['services'] = Service::all();
         $data['contact'] = Contact::first();
         return view('frontend.pages.service',$data);
@@ -71,6 +73,7 @@ class FrontendController extends Controller
 
     //__ portfolio function is here __//
     public function portfolio(){
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['contact'] = Contact::first();
         $data['reactProjects'] = ReactProject::all();
         $data['recentProjects'] = RecentProject::all();
@@ -80,24 +83,28 @@ class FrontendController extends Controller
 
     //__ blog function is here __//
     public function blog(){
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['contact'] = Contact::first();
         return view('frontend.pages.blog',$data);
     }
 
     //__ package function is here __//
     public function package(){
+    $data['workDocumentaries'] = WorkDocumentary::first();
     $data['contact'] = Contact::first();
     return view('frontend.pages.package',$data);
     }
 
     //__ contact function is here __//
     public function contact(){
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['contact'] = Contact::first();
         return view('frontend.pages.contact',$data);
     }
 
      //__ contact function is here __//
      public function chat(){
+        $data['workDocumentaries'] = WorkDocumentary::first();
         $data['contact'] = Contact::first();
         return view('frontend.pages.chat.chat',$data);
     }
