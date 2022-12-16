@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="contact-form-card">
-                    <h4 class="contact-title title-name">DON'T FEEL HESITATE TO CATCH ME</h4>
+                    <h4 class="contact-title text-danger">DON'T FEEL HESITATE TO CATCH ME</h4>
                     <form action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())

@@ -9,8 +9,8 @@
                         <div class="m-auto"><i class="ti-alarm-clock icon-xl"></i></div>
                     </div>
                     <div class="col-7 text-left py-3">
-                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_work }}k</h1>
-                        <p class="text-light mb-1">Hours Worked</p>
+                        <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_work }}+</h1>
+                        <p class="text-light mb-1">Hours Work </p>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-7 text-left py-3">
                         <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_project }}+</h1>
-                        <p class="text-light mb-1">Project Finished</p>
+                        <p class="text-light mb-1">Projects Finished</p>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-7 text-left py-3">
                         <h1 class="text-danger font-weight-bold font40">{{ $workDocumentaries->total_experience }}+</h1>
-                        <p class="text-light mb-1">Years experiences</p>
+                        <p class="text-light mb-1">Years Experience</p>
                     </div>
                 </div>
             </div>

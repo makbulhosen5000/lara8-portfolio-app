@@ -43,6 +43,7 @@ class FrontendController extends Controller
         $data['skills'] = Skill::all();
         $data['languageSkill'] = Language::all();
         $data['workDocumentaries'] = WorkDocumentary::first();
+        $data['newses'] = News::all();
         return view('frontend.layouts.home',$data);
     }
      //__ about function is here __//
@@ -83,6 +84,7 @@ class FrontendController extends Controller
 
     //__ blog function is here __//
     public function blog(){
+        $data['newses'] = News::all();
         $data['workDocumentaries'] = WorkDocumentary::first();
         $data['contact'] = Contact::first();
         return view('frontend.pages.blog',$data);
